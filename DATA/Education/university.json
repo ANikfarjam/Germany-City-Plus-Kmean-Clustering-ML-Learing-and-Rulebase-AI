@@ -1,0 +1,132 @@
+
+        {
+        "@context":"https:\/\/schema.org",
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+        {"@type":"ListItem","position":1,"item":{"name":"Home","@id":"https://research.com"}}
+                ,{"@type":"ListItem","position": 2,"item":{"name":"Best Universities in the World 2023 Ranking - Best universities","@id":"http://research.com/university-rankings/best-global-universities/de" } }
+                ]}
+
+    window.lazySizesConfig = window.lazySizesConfig || {};
+    window.lazySizesConfig.init = false;
+
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, 'clarity', 'script', 'ffq347geb3');
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-03ESCQPCRG');
+    gtag('event', 'page_info', JSON.parse('{"type":"ranking","categories":"","hub":"default","directory":"university-rankings","subdirectory":"best-global-universities"}'));
+
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PLXGG22');
+
+    function showMoreText() {
+      event.target.style.display = 'none';
+      
+      event.target.closest('.rankings-top').querySelector('.show-more-text').style.display = 'block';
+    }
+    function toggleGivenSelector(selector) {
+      const element = document.querySelector(selector);
+      const show = element?.classList.contains('show');
+      element?.classList.toggle('show');
+      if (show) {
+          event.target.innerHTML = 'Show more';
+      } else {
+          event.target.innerHTML = 'Show less';
+      }
+    }
+
+    const form = document.getElementById('newsletter-form')
+
+    if (form) {
+
+        const formParent = document.getElementById('newsletter')
+        const formConfirmation = document.getElementById('newsletter-confirmation')
+        const formError = document.getElementById('newsletter-error')
+        const submitButton = document.getElementById('newsletter-submit')
+
+        form.querySelector('input').addEventListener('input', () => {
+            if (formError !== null) {
+                formError.classList.add('hidden');
+            }
+        });
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const email = document.getElementById("newsletter-email").value;
+            if (!testEmail(email)) {
+                if (formError !== null) {
+                    formError.innerHTML = 'Please enter a valid email address';
+                    formError.classList.remove('hidden');
+                }
+                return;
+            }
+
+            formError.classList.add('hidden');
+            setFormBusy()
+
+            try {
+                const response = await fetch(form.getAttribute('action'), {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                    }),
+                });
+
+                if (response.ok) {
+                    formParent.classList.add('hidden');
+                    formConfirmation.classList.remove('hidden');
+                    return;
+                }
+
+                if (response.status === 422) {
+                    const responseData = await response.json();
+                    const errorMessage = responseData?.message ?? responseData?.error
+                    showEmailInputError(errorMessage);
+                    return
+                }
+
+                showEmailInputError();
+            } catch {
+                showEmailInputError();
+            } finally {
+                submitButton.classList.remove('disabled');
+                setFormNotBusy()
+            }
+        });
+
+        function showEmailInputError(message = 'An error occurred. Please try again later.') {
+            setFormNotBusy();
+            formError.innerHTML = message;
+            formError.classList.remove('hidden');
+        }
+
+        function testEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function setFormBusy() {
+            submitButton.classList.add('disabled');
+        }
+
+        function setFormNotBusy() {
+            submitButton.classList.remove('disabled');
+        }
+    }
+
+
+(function(){if (!document.body) return;var js = "window['__CF$cv$params']={r:'867516837c55ce94',t:'MTcxMDkzMTI2Ny43MjkwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();
