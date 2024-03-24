@@ -1,0 +1,17 @@
+,states,number of rainy days,precipitation_millimeters,ave_temp_2023(in Celsius),avg_sunshine_hour2023
+0,Baden-Württemberg,110,796,11.0,1855
+1,Bavaria,161,1801,10.3,1855
+2,Berlin,111,636,11.3,1830
+3,Brandenburg,112,665,10.8,1745
+4,Bremen,179,2004,11.1,1670
+5,Hamburg,128,865,11.0,1710
+6,Hesse,128,774,10.7,1720
+7,Lower Saxony,125,849,10.8,1655
+8,Mecklenburg-Vorpomern,130,930,10.2,1810
+9,North Rhine-Westphalia,124,769,11.2,1645
+10,Rhineland-Palatinate,129,967,11.1,1800
+11,Saarland,130,930,11.5,1835
+12,Saxony,96,483,10.1,1735
+13,Saxony-Anhalt,112,585,10.8,1730
+14,Schleswig-Holstein,106,571,10.3,1735
+15,Thuringia,105,473,10.1,1685
