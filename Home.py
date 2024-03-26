@@ -7,6 +7,18 @@ import Analysis
 with open("intro.txt",'r') as f:
     intro_text = f.read()
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+df_checkBox = html.Div([
+    dcc.Checklist(
+        id='df-checkbox',
+        options=[
+            {'label': 'Healthcare', 'value': 'healthcare'},
+            {'label': 'Rental', 'value': 'rental'}
+        ],
+        value=['healthcare']  # Default value(s)
+    ),
+])
+
 navbar = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink("Home", href="/", active='exact')),
@@ -27,16 +39,20 @@ navbar = dbc.NavbarSimple(
     color="dark",
     dark=True,
 )
+
 content = html.Div(id="page-content")
-app.layout = html.Div([dcc.Location(id="url"), navbar, content])
-@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
-def render_page_content(pathname):
+app.layout = html.Div([dcc.Location(id="url"), navbar, content, df_checkBox])
+@app.callback(Output("page-content", "children"), [Input("url", "pathname"), Input("df-checkbox", "value")])
+def render_page_content(pathname, value):
     if pathname == "/":
         return html.P(intro_text)
     elif pathname == "/Analysis":
-        html.Div(id='map', style={'width': '100%'}),
-        graph = dcc.Graph(figure=Analysis.fig)
-        return graph
+        if "healthcare" in value:
+            graph = dcc.Graph(figure=Analysis.scatterMap(Analysis.healthCare_df, 'Number of beds', 'Number of Hospitals'))
+            return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
+        elif "rental" in value:
+            graph = dcc.Graph(figure=Analysis.scatterMap(Analysis.rental_df, 'Beds', 'Price'))
+            return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
     elif pathname == "/page-2":
         return html.P("Oh cool, this is page 2!")
     # If the user tries to reach a different page, return a 404 message
@@ -48,6 +64,7 @@ def render_page_content(pathname):
         ],
         className="p-3 bg-light rounded-3",
     )
+
 
 
 if __name__=='__main__':
