@@ -4,25 +4,9 @@ import dash_bootstrap_components as dbc #a library and package to create nav bar
 import plotly.express as px
 import Analysis
 
-<<<<<<< Updated upstream
 with open("intro.txt",'r') as f:
     intro_text = f.read()
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
-=======
-
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-
-df_checkBox = html.Div([
-    dcc.Checklist(
-        id='df-checkbox',
-        options=[
-            {'label': 'Healthcare', 'value': 'healthcare'},
-            {'label': 'Rental', 'value': 'rental'}
-        ],
-        value=['healthcare']  # Default value(s)
-    ),
-])
->>>>>>> Stashed changes
 
 navbar = dbc.NavbarSimple(
     children=[
@@ -63,7 +47,6 @@ def render_page_content(pathname):
     ])
 
     elif pathname == "/Analysis":
-<<<<<<< Updated upstream
         return html.Div([
             html.Div([
                 html.Div(id='df_checkBox_container', children=[
@@ -82,18 +65,6 @@ def render_page_content(pathname):
             ], style={'display': 'flex'}),
         ])
     elif pathname == "/assets/page-2":
-=======
-        if "healthcare" in value:
-            graph = dcc.Graph(figure=Analysis.scatterMap(Analysis.healthCare_df, 'Number of beds', 'Number of Hospitals'))
-            return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
-        elif "rental" in value:
-            graph = dcc.Graph(figure=Analysis.scatterMap(Analysis.rental_df, 'Beds', 'Price'))
-            return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
-        elif "Religion" in value:
-            graph = dcc.Graph(figure=Analysis.choroplethMap(Analysis.rental_df, 'Beds', 'Price'))
-            return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
-    elif pathname == "/page-2":
->>>>>>> Stashed changes
         return html.P("Oh cool, this is page 2!")
     # If the user tries to reach a different page, return a 404 message
     return html.Div(
