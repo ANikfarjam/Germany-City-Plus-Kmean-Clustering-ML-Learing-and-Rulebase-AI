@@ -1,6 +1,6 @@
 #Author: Ashkan Nikfarjam
 from dash import Dash, dcc, html, Input, Output
-import dash_bootstrap_components as dbc #a library and package to create nav bar and other components
+import dash_bootstrap_components as dbc #a library and package to create nav bar and other components  
 import plotly.express as px
 import Analysis
 
@@ -35,14 +35,16 @@ app.layout = html.Div([dcc.Location(id="url"), navbar, content])
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/":
-       return html.Div([
+         return html.Div([
         html.Div([
-            html.P(intro_text, style={'width': '50%'}),  # Adjust the width as needed
-            html.Iframe(
-                src='https://docs.google.com/presentation/d/e/2PACX-1vTN00ZBzwqmcQe5cbG1XK4NeaUgCE-KtU2NgeB5VwlBoiO2nw5noUO1LewV_Ed01w/embed?start=false&loop=false&delayms=3000',
-                width='800px',
-                height='500px'
-            ),
+            html.P(intro_text, style={'width': '50%'}),  
+            html.Div([
+                html.Iframe(
+                    src='https://docs.google.com/presentation/d/e/2PACX-1vTN00ZBzwqmcQe5cbG1XK4NeaUgCE-KtU2NgeB5VwlBoiO2nw5noUO1LewV_Ed01w/embed?start=false&loop=false&delayms=3000',
+                    width='800px',
+                    height='500px'
+                ),
+            ], style={'display': 'flex', 'alignItems': 'center'}),  # Centering the iframe horizontally
         ], style={'display': 'flex', 'flexDirection': 'row'}),
     ])
 
