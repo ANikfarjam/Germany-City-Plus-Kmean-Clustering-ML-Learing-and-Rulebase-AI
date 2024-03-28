@@ -22,7 +22,7 @@ HealthCare_data.rename(columns={'City':'city'}, inplace=True)
 healthCare_df = pd.merge(city_df, HealthCare_data, on='city')
 
 
-
+## Author Ashkan Nikfarjam
 def scatterMap(df, color_column, size_column):
     fig = px.scatter_mapbox(df, 
                         lat='lat',
@@ -34,4 +34,18 @@ def scatterMap(df, color_column, size_column):
                         color_continuous_scale="YlOrRd",  # Yellow to Red color scale
                         height=1000
                         )
+    return fig
+
+# Author Ryan Fernald
+def choroplethMap(df, color_column):
+    fig = px.choropleth_mapbox(df,
+                                geojson="german-states.geojson", 
+                                locations=df.index, 
+                                featureidkey="properties.NAME_1",  
+                                color=color_column, 
+                                mapbox_style="carto-positron",
+                                center={"lat": df['lat'].mean(), "lon": df['lng'].mean()},
+                                color_continuous_scale="YlOrRd", 
+                                height=1000
+                                )
     return fig
