@@ -90,7 +90,7 @@ def update_graph(value):
         graph = dcc.Graph(figure=Analysis.scatterMap(Analysis.school_df, size_column='Number of schools'))
         return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
     elif "population" in value:
-        graph = dcc.Graph(figure=Analysis.scatterMap(Analysis.mod_City, size_column='population'))
+        graph = dcc.Graph(figure=Analysis.scatterMap(Analysis.mod_city, size_column='population'))
         return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
 
 if __name__=='__main__':
