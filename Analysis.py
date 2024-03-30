@@ -25,6 +25,19 @@ healthCare_df = pd.merge(city_df.copy(), HealthCare_data, on='city')
 school = pd.read_csv("./DATA/Education/matchedCitySchools.csv")
 school_df = pd.merge(school, city_df.copy(), on='city', how='left')
 print(school_df.head())
+
+# environment
+environment = pd.read_csv("./DATA/Environment/temperature_by_state.csv")
+weather = pd.read_csv("./DATA/Environment/weather.csv")
+
+# public transportation 
+public_transportation = pd.read_csv("./DATA/Public Transportation/transportation.csv")
+
+# politics
+politics = pd.read_csv("./DATA/Politics/politics.csv")
+
+
+
 #use this df for city population
 mod_city = city_df.copy()
 mod_city = mod_city.dropna()
