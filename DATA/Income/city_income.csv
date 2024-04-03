@@ -1,0 +1,111 @@
+City,State,GDP in Billions,GDP PerCapita,GDP Per Worker
+Berlin,Berlin,165.457,45074.0,79182.0
+Hamburg,Hamburg,130.873,70620.0,101308.0
+Munich,Bavaria,128.752,86529.0,112284.0
+Frankfurt am Main,Hesse,74.087,97270.0,100966.0
+Köln,North Rhine-Westphalia,66.687,61845.0,84983.0
+Hannover region,Lower Saxony,55.374,47884.0,80313.0
+Stuttgart,Baden-Württemberg,54.983,87513.0,103237.0
+Düsseldorf,North Rhine-Westphalia,54.150,87338.0,97282.0
+Nürnberg,Bavaria,32.323,62997.0,81571.0
+Bremen,Bremen,30.973,54826.0,83433.0
+Bonn,North Rhine-Westphalia,27.160,81997.0,105909.0
+Essen,North Rhine-Westphalia,27.114,46673.0,79954.0
+Dortmund,North Rhine-Westphalia,24.595,41880.0,73897.0
+Dresden,Saxony,24.067,43302.0,70771.0
+Leipzig,Saxony,23.804,39695.0,67660.0
+Mainz,Rhineland-Palatinate,22.699,104441.0,141590.0
+Aachen region,North Rhine-Westphalia,22.626,40647.0,75096.0
+Karlsruhe,Baden-Württemberg,22.143,72016.0,92842.0
+Mannheim,Baden-Württemberg,21.491,69151.0,89058.0
+Braunschweig,Lower Saxony,20.504,82448.0,122031.0
+Wolfsburg,Lower Saxony,19.668,158749.0,153485.0
+Wiesbaden,Hesse,19.112,68556.0,98535.0
+Münster,North Rhine-Westphalia,18.800,59294.0,78582.0
+Duisburg,North Rhine-Westphalia,18.360,37053.0,78918.0
+Ingolstadt,Bavaria,17.943,130509.0,144308.0
+Saarbrücken region,Saarland,14.987,45776.0,72215.0
+Bielefeld,North Rhine-Westphalia,14.773,44263.0,67893.0
+Augsburg,Bavaria,14.740,49771.0,75289.0
+Darmstadt,Hesse,14.107,88497.0,101492.0
+Regensburg,Bavaria,13.842,90529.0,86595.0
+Freiburg im Breisgau,Baden-Württemberg,13.712,59259.0,75884.0
+Bochum,North Rhine-Westphalia,13.703,37650.0,70537.0
+Wuppertal,North Rhine-Westphalia,13.502,38056.0,77414.0
+Ludwigshafen am Rhein,Rhineland-Palatinate,13.130,76182.0,104488.0
+Kiel,Schleswig-Holstein,12.452,50531.0,70750.0
+Erlangen,Bavaria,11.814,104698.0,104473.0
+Kassel,Hesse,11.017,54884.0,72133.0
+Ulm,Baden-Württemberg,10.382,81955.0,81228.0
+Lübeck,Schleswig-Holstein,10.231,47354.0,76904.0
+Krefeld,North Rhine-Westphalia,9.803,43194.0,78982.0
+Erfurt,Thuringia,9.483,44425.0,66005.0
+Heidelberg,Baden-Württemberg,9.352,58819.0,75584.0
+Mönchengladbach,North Rhine-Westphalia,9.312,35770.0,67151.0
+Chemnitz,Saxony,9.311,38199.0,63840.0
+Magdeburg,Saxony-Anhalt,8.985,38074.0,64845.0
+Osnabrück,Lower Saxony,8.769,53267.0,66783.0
+Gelsenkirchen,North Rhine-Westphalia,8.763,33754.0,76217.0
+Koblenz,Rhineland-Palatinate,8.729,76899.0,80234.0
+Würzburg,Bavaria,8.653,68164.0,67261.0
+Oldenburg,Lower Saxony,8.558,50342.0,71497.0
+Rostock,Mecklenburg-Vorpommern,8.486,40656.0,70381.0
+Leverkusen,North Rhine-Westphalia,8.419,51375.0,103659.0
+Potsdam,Brandenburg,8.288,45378.0,70536.0
+Halle an der Saale,Saxony-Anhalt,8.149,34244.0,64737.0
+Heilbronn,Baden-Württemberg,7.599,60292.0,77320.0
+Hagen,North Rhine-Westphalia,6.730,35665.0,69761.0
+Mülheim an der Ruhr,North Rhine-Westphalia,6.324,37019.0,80368.0
+Oberhausen,North Rhine-Westphalia,5.908,28246.0,64243.0
+Pforzheim,Baden-Württemberg,5.670,45080.0,73238.0
+Aschaffenburg,Bavaria,5.594,78658.0,91547.0
+Hamm,North Rhine-Westphalia,5.528,30863.0,65705.0
+Solingen,North Rhine-Westphalia,5.448,34246.0,74469.0
+Salzgitter,Lower Saxony,5.369,51738.0,94485.0
+Jena,Thuringia,5.348,48349.0,73015.0
+Schweinfurt,Bavaria,5.299,99130.0,82677.0
+Bamberg,Bavaria,5.138,66543.0,67616.0
+Offenbach am Main,Hesse,5.025,38328.0,74327.0
+Fürth,Bavaria,5.012,38951.0,78836.0
+Kaiserslautern,Rhineland-Palatinate,4.990,50158.0,70040.0
+Trier,Rhineland-Palatinate,4.942,44678.0,64755.0
+Bayreuth,Bavaria,4.795,64820.0,72295.0
+Landshut,Bavaria,4.456,60954.0,79546.0
+Herne,North Rhine-Westphalia,4.350,27745.0,66703.0
+Remscheid,North Rhine-Westphalia,4.319,38689.0,71498.0
+Schwerin,Mecklenburg-Vorpommern,4.224,44150.0,64208.0
+Bremerhaven,Bremen,4.178,36855.0,65679.0
+Coburg,Bavaria,4.031,98551.0,98188.0
+Flensburg,Schleswig-Holstein,3.941,43541.0,65270.0
+Neumünster,Schleswig-Holstein,3.856,48380.0,70620.0
+Cottbus,Brandenburg,3.772,38284.0,61287.0
+Passau,Bavaria,3.717,70466.0,68537.0
+Kempten (Allgäu),Bavaria,3.711,53778.0,72692.0
+Rosenheim,Bavaria,3.486,54850.0,69983.0
+Worms,Rhineland-Palatinate,3.465,41419.0,77303.0
+Wilhelmshaven,Lower Saxony,3.419,45522.0,74376.0
+Emden,Lower Saxony,3.323,66872.0,83174.0
+Baden-Baden,Baden-Württemberg,3.061,55158.0,73826.0
+Gera,Thuringia,2.946,32115.0,60822.0
+Memmingen,Bavaria,2.883,64737.0,74945.0
+Bottrop,North Rhine-Westphalia,2.882,24562.0,62506.0
+Speyer,Rhineland-Palatinate,2.812,55513.0,69414.0
+Amberg,Bavaria,2.695,64142.0,73043.0
+Straubing,Bavaria,2.690,56345.0,65460.0
+Ansbach,Bavaria,2.630,63112.0,70328.0
+Dessau-Roßlau,Saxony-Anhalt,2.621,33156.0,63961.0
+Weiden in der Oberpfalz,Bavaria,2.521,59307.0,62660.0
+Brandenburg an der Havel,Brandenburg,2.507,34695.0,64392.0
+Frankfurt an der Oder,Brandenburg,2.314,40710.0,61541.0
+Weimar,Thuringia,2.203,33837.0,63978.0
+Landau in der Pfalz,Rhineland-Palatinate,2.166,46270.0,63318.0
+Hof (Saale),Bavaria,2.087,46228.0,61214.0
+Delmenhorst,Lower Saxony,1.963,25320.0,61135.0
+Frankenthal (Pfalz),Rhineland-Palatinate,1.885,38661.0,74954.0
+Zweibrücken,Rhineland-Palatinate,1.791,52606.0,79991.0
+Neustadt an der Weinstraße,Rhineland-Palatinate,1.754,32851.0,63965.0
+Kaufbeuren,Bavaria,1.747,38914.0,65558.0
+Eisenach,Thuringia,1.635,39041.0,62559.0
+Pirmasens,Rhineland-Palatinate,1.582,39428.0,60570.0
+Schwabach,Bavaria,1.580,38430.0,70398.0
+Suhl,Thuringia,1.200,35137.0,60076.0
