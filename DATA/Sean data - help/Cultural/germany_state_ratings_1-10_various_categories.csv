@@ -1,0 +1,16 @@
+﻿Country,Region,Code,Education,Jobs,Income,Safety,Health,Environment,Civic engagement,Accessiblity to services,Housing,Community,Life satisfaction
+Germany,Bavaria,DE2,8.8,9.8,5.2,9.8,7.5,7.5,8.1,6.6,4.6,5.2,7.7
+Germany,Berlin,DE3,8.6,8.0,4.1,9.7,7.1,5.8,7.1,7.2,5.1,8.0,7.3
+Germany,Brandenburg,DE4,9.5,9.4,4.1,9.9,6.7,7.0,7.2,5.7,5.7,6.9,8.1
+Germany,Bremen,DE5,7.2,7.5,4.2,9.7,6.2,6.4,6.3,6.4,5.1,7.3,4.6
+Germany,Hamburg,DE6,8.4,8.7,5.1,9.7,7.3,7.1,7.7,7.2,5.1,3.9,8.8
+Germany,Hesse,DE7,7.8,8.6,4.8,9.7,7.3,7.7,7.3,6.9,4.6,7.1,6.2
+Germany,Mecklenburg-Vorpommern,DE8,9.4,9.1,3.9,9.8,6.5,7.7,6.2,5.2,6.2,8.5,7.7
+Germany,Lower Saxony,DE9,7.9,9.1,4.4,9.8,6.7,7.6,7.0,6.4,5.1,6.8,8.8
+Germany,North Rhine-Westphalia,DEA,7.7,8.3,4.5,9.9,6.7,6.9,7.4,6.8,5.1,6.0,8.5
+Germany,Rhineland-Palatinate,DEB,8.0,8.9,4.6,9.9,7.0,8.1,7.5,6.5,5.1,7.2,8.1
+Germany,Saarland,DEC,8.0,8.8,4.1,9.7,6.2,8.0,7.6,5.7,5.1,9.9,8.1
+Germany,Saxony,DED,9.9,9.4,4.0,9.8,6.8,7.2,7.4,5.9,6.2,6.4,6.9
+Germany,Saxony-Anhalt,DEE,9.5,8.7,3.9,9.5,5.7,7.3,5.4,4.9,6.8,5.3,7.7
+Germany,Schleswig-Holstein,DEF,8.7,9.2,4.6,9.8,7.0,7.7,7.7,7.0,5.7,4.1,8.5
+Germany,Thuringia,DEG,9.7,9.4,3.9,9.8,6.5,7.6,7.0,5.2,6.2,9.3,8.1

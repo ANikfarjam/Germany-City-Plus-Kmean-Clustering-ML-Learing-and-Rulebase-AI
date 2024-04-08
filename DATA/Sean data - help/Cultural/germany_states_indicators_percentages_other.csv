@@ -1,0 +1,16 @@
+﻿Country,Region,Code,Population with at least secondary education,Employment rate,Unemploy-ment rate,Household disposable income per capita,Homicide rate,Mortality rate,Life expectancy,Air pollution (level of PM2.5),Voter turnout,Broadband access,Internet download speed 2021-Q4,Number of rooms per person,Perceived social network support ,Self assessment of life satisfaction
+Germany,Bavaria,DE2,87.6,79.1,2.8, 29 016,0.8,7.5,81.6,10.1,79.9,90.0,-20.1,1.7,86.6,7.0
+Germany,Berlin,DE3,86.5,73.6,5.9, 23 519,1.3,7.6,80.9,13.4,75.2,91.0,-3.3,1.8,92.7,6.9
+Germany,Brandenburg,DE4,91.5,77.6,3.1, 23 852,0.5,7.9,80.6,11.0,75.6,85.0,-34.1,1.9,90.3,7.1
+Germany,Bremen,DE5,78.2,69.4,5.2, 24 201,1.3,8.2,80.0,12.2,71.9,77.0,2.4,1.8,91.1,6.2
+Germany,Hamburg,DE6,84.9,75.4,4.5, 28 429,1.3,7.7,81.4,10.8,77.8,92.0,-6.6,1.8,83.6,7.3
+Germany,Hesse,DE7,81.8,73.7,3.9, 27 151,1.1,7.6,81.5,9.7,76.2,92.0,-13.6,1.7,90.8,6.6
+Germany,Mecklenburg-Vorpommern,DE8,91.1,77.0,3.9, 22 834,0.8,8.0,80.4,9.7,71.1,80.0,-36.1,2.0,93.9,7.0
+Germany,Lower Saxony,DE9,81.9,75.6,3.3, 25 216,1.0,8.0,80.9,9.8,74.7,87.0,-18.0,1.8,90.2,7.3
+Germany,North Rhine-Westphalia,DEA,80.9,72.6,4.2, 25 498,0.6,7.9,80.8,11.3,76.4,91.0,-15.8,1.8,88.3,7.2
+Germany,Rhineland-Palatinate,DEB,82.5,75.7,3.8, 25 935,0.6,7.9,81.1,8.9,77.2,91.0,-23.6,1.8,90.9,7.1
+Germany,Saarland,DEC,83.0,75.0,3.8, 23 861,1.3,8.3,80.2,9.1,77.3,81.0,-26.5,1.8,97.0,7.1
+Germany,Saxony,DED,94.3,77.9,3.4, 23 389,0.7,7.7,80.5,10.7,76.5,89.0,-35.5,2.0,89.1,6.8
+Germany,Saxony-Anhalt,DEE,91.6,75.7,4.5, 22 677,1.8,8.6,79.7,10.4,67.9,79.0,-41.7,2.1,86.8,7.0
+Germany,Schleswig-Holstein,DEF,87.0,76.9,3.5, 26 389,0.9,8.0,81.2,9.7,78.1,90.0,-7.2,1.9,84.0,7.2
+Germany,Thuringia,DEG,92.7,77.8,3.3, 22 828,0.7,8.2,80.7,9.8,74.9,86.0,-47.5,2.0,95.7,7.1

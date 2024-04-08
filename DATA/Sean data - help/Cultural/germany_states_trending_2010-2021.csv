@@ -1,0 +1,16 @@
+﻿Country,Region,Code,Education,Jobs,Income,Safety,Health,Environment,Civic engagement,Accessiblity to services,Housing,Community,Life satisfaction
+Germany,Bavaria,DE2,+,+,-,~,-,+,-,..,-,..,..
+Germany,Berlin,DE3,+,+,-,~,-,+,-,..,~,..,..
+Germany,Brandenburg,DE4,+,+,-,~,-,+,-,..,~,..,..
+Germany,Bremen,DE5,+,+,-,~,-,+,-,..,~,..,..
+Germany,Hamburg,DE6,+,+,-,~,-,+,-,..,~,..,..
+Germany,Hesse,DE7,+,+,-,~,-,+,~,..,-,..,..
+Germany,Mecklenburg-Vorpommern,DE8,+,+,-,~,~,+,-,..,-,..,..
+Germany,Lower Saxony,DE9,+,+,-,~,+,~,-,..,-,..,..
+Germany,North Rhine-Westphalia,DEA,+,+,-,~,~,+,-,..,-,..,..
+Germany,Rhineland-Palatinate,DEB,+,+,-,~,-,+,-,..,~,..,..
+Germany,Saarland,DEC,+,+,-,~,~,~,-,..,-,..,..
+Germany,Saxony,DED,..,+,+,+,+,+,~,..,-,..,..
+Germany,Saxony-Anhalt,DEE,..,+,+,+,+,+,~,..,~,..,..
+Germany,Schleswig-Holstein,DEF,..,+,+,+,+,+,+,..,-,..,..
+Germany,Thuringia,DEG,..,+,+,+,+,+,+,..,+,..,..
