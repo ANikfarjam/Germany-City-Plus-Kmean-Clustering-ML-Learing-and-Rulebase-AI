@@ -4,8 +4,8 @@ import dash_bootstrap_components as dbc #a library and package to create nav bar
 import plotly.express as px
 import Analysis
 
-with open("intro.txt",'r') as f:
-    intro_text = f.read()
+#with open("intro.txt",'r') as f:
+#    intro_text = f.read()
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
 
 navbar = dbc.NavbarSimple(
