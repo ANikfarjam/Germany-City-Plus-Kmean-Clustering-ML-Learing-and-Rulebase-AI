@@ -52,8 +52,8 @@ weather = pd.read_csv("./DATA/Environment/weather.csv")
 # public transportation 
 public_transportation = pd.read_csv("./DATA/Public Transportation/transportation.csv")
 
-# politics
-politics = pd.read_csv("./DATA/Politics/politics.csv")
+# # politics
+# politics = pd.read_csv("./DATA/Politics/politics.csv")
 
 
 
