@@ -1,0 +1,73 @@
+City,City coordinates,Country,Domain,Total students,University
+Bielefeld,"[52.0333330, 8.5333330]",Germany,uni-bielefeld.de,25896.0,Bielefeld University
+Brandenburg,"[52.4166670, 12.5500000]",Germany,b-tu.de,,Brandenburg University of Technology
+Oldenburg,"[53.1666670, 8.2000000]",Germany,uol.de,,Carl von Ossietzky University of Oldenburg
+Chemnitz,"[50.8333330, 12.9166670]",Germany,tu-chemnitz.de,,Chemnitz University of Technology
+Düsseldorf,"[51.2166670, 6.7666670]",Germany,kunstakademie-duesseldorf.de,,Düsseldorf Art Academy
+Jena,"[50.9333330, 11.5833330]",Germany,uni-jena.de,18219.0,Friedrich Schiller University Jena
+Berlin,"[52.5166670, 13.4000000]",Germany,fu-berlin.de,,Free University of Berlin
+Freiberg,"[50.9166670, 13.3666670]",Germany,tu-freiberg.de,,Freiberg University of Mining and Technology
+Frankfurt,"[50.1166670, 8.6833330]",Germany,goethe-university-frankfurt.de,47141.0,Goethe University Frankfurt
+Hamburg,"[53.5500000, 10.0000000]",Germany,tuhh.de,,Hamburg University of Technology
+,,Germany,mh-hannover.de,,Hannover Medical School
+Heidelberg,"[49.4166670, 8.7000000]",Germany,uni-heidelberg.de,19504.0,Heidelberg University
+Berlin,"[52.5166670, 13.4000000]",Germany,hu-berlin.de,,Humboldt University of Berlin
+,,Germany,jacobs-university.de,,Jacobs University
+Mainz,"[50.0000000, 8.2711110]",Germany,uni-mainz.de,31919.0,Johannes Gutenberg University Mainz
+,,Germany,uni-giessen.de,28575.0,Justus Liebig University Giessen
+Karlsruhe,"[49.0047220, 8.3858330]",Germany,kit.edu,27255.0,Karlsruhe Institute of Technology
+Kiel,"[54.3333330, 10.1333330]",Germany,uni-kiel.de,26412.0,Kiel University
+,,Germany,uni-hannover.de,24083.0,Leibniz University Hannover
+Leipzig,"[51.3000000, 12.3333330]",Germany,uni-leipzig.de,31088.0,Leipzig University
+Lüneburg,"[53.2500000, 10.4000000]",Germany,leuphana.de,,Leuphana University of Lüneburg
+Munich,"[48.1500000, 11.5833000]",Germany,uni-muenchen.de,,Ludwig Maximilian University of Munich
+Halle,"[51.5000000, 12.0000000]",Germany,uni-halle.de,,Martin Luther University Halle-Wittenberg
+Osnabrück,"[52.2666670, 8.0500000]",Germany,uni-osnabrueck.de,,Osnabrück University
+Magdeburg,"[52.1666670, 11.6666670]",Germany,ovgu.de,13797.0,Otto von Guericke University Magdeburg
+Paderborn,"[51.7166670, 8.7666670]",Germany,uni-paderborn.de,,Paderborn University
+Bochum,"[51.4833330, 7.2166670]",Germany,ruhr-uni-bochum.de,43015.0,Ruhr University Bochum
+Aachen,"[50.7708330, 6.1052780]",Germany,rwth-aachen.de,44699.0,RWTH Aachen University
+,,Germany,uni-saarland.de,,Saarland University
+Berlin,"[52.5166670, 13.4000000]",Germany,tu-berlin.de,22622.0,Technical University of Berlin
+,,Germany,tu-braunschweig.de,20020.0,Technical University of Braunschweig
+Darmstadt,"[49.8705560, 8.6494440]",Germany,tu-darmstadt.de,17814.0,Technical University of Darmstadt
+Dortmund,"[51.5166670, 7.4500000]",Germany,tu-dortmund.de,34267.0,Technical University of Dortmund
+Dresden,"[51.0500000, 13.7500000]",Germany,tu-dresden.de,31095.0,Technical University of Dresden
+Ilmenau,"[50.6833330, 10.9000000]",Germany,tu-ilmenau.de,,Technical University of Ilmenau
+Kaiserslautern,"[49.4500000, 7.7500000]",Germany,uni-kl.de,,Technical University of Kaiserslautern
+Munich,"[48.1500000, 11.5833000]",Germany,tum.de,42705.0,Technical University of Munich
+Ulm,"[48.4000000, 10.0000000]",Germany,uni-ulm.de,10284.0,Ulm University
+,,Germany,fau.eu,38111.0,University of Erlangen–Nuremberg
+Augsburg,"[48.3666670, 10.8833330]",Germany,uni-augsburg.de,,University of Augsburg
+Bayreuth,"[49.9480560, 11.5783330]",Germany,uni-bayreuth.de,8542.0,University of Bayreuth
+Bonn,"[50.7333330, 7.1000000]",Germany,uni-bonn.de,38043.0,University of Bonn
+Bremen,"[53.0833330, 8.8000000]",Germany,uni-bremen.de,17771.0,University of Bremen
+Cologne,"[50.9333330, 6.9500000]",Germany,uni-koeln.de,36965.0,University of Cologne
+,,Germany,uni-due.de,42022.0,University of Duisburg-Essen
+Düsseldorf,"[51.2166670, 6.7666670]",Germany,uni-duesseldorf.de,36569.0,University of Düsseldorf
+Freiburg,"[48.0000000, 7.8500000]",Germany,uni-freiburg.de,21475.0,University of Freiburg
+Göttingen,"[51.5333330, 9.9333330]",Germany,uni-goettingen.de,30773.0,University of Göttingen
+Greifswald,"[54.1000000, 13.3833330]",Germany,uni-greifswald.de,,University of Greifswald
+,,Germany,uni-hohenheim.de,8997.0,University of Hohenheim
+Hamburg,"[53.5500000, 10.0000000]",Germany,uni-hamburg.de,31517.0,University of Hamburg
+Kassel,"[51.3166670, 9.5000000]",Germany,uni-kassel.de,,University of Kassel
+,,Germany,uni-koblenz-landau.de,,University of Koblenz-Landau
+Konstanz,"[47.6666670, 9.1833330]",Germany,uni-konstanz.de,11207.0,University of Konstanz
+Schleswig,"[54.5166670, 9.5500000]",Germany,uni-luebeck.de,,University of Lübeck
+Mannheim,"[49.4883330, 8.4647220]",Germany,uni-mannheim.de,,University of Mannheim
+Marburg,"[50.8166670, 8.7666670]",Germany,uni-marburg.de,26487.0,University of Marburg
+Munich,"[48.1500000, 11.5833000]",Germany,lmu.de,36436.0,University of Munich
+Münster,"[51.9666670, 7.6333330]",Germany,uni-muenster.de,32791.0,University of Münster
+Oldenburg,"[53.1666670, 8.2000000]",Germany,uni-oldenburg.de,,University of Oldenburg
+,,Germany,,,University of Osnabrueck
+Potsdam,"[52.4000000, 13.0666670]",Germany,uni-potsdam.de,20063.0,University of Potsdam
+,,Germany,uni-regensburg.de,,University of Regensburg
+Rostock,"[54.0833330, 12.1333330]",Germany,uni-rostock.de,,University of Rostock
+Siegen,"[50.8666670, 8.0333330]",Germany,uni-siegen.de,,University of Siegen
+Stuttgart,"[48.7666670, 9.1833330]",Germany,uni-stuttgart.de,26004.0,University of Stuttgart
+Trier,"[49.7500000, 6.6333330]",Germany,uni-trier.de,,University of Trier
+Tübingen,"[48.5333330, 9.0500000]",Germany,uni-tuebingen.de,27901.0,University of Tübingen
+Hanover,"[52.3666670, 9.7166670]",Germany,tiho-hannover.de,,University of Veterinary Medicine Hanover
+Wuppertal,"[51.2666670, 7.1833330]",Germany,uni-wuppertal.de,23343.0,University of Wuppertal
+Würzburg,"[49.7877780, 9.9361110]",Germany,uni-wuerzburg.de,22895.0,University of Würzburg
+,,Germany,uni-wh.de,,Witten/Herdecke University
