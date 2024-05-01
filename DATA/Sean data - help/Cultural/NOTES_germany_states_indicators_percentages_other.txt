@@ -2,7 +2,7 @@ Population with at least secondary education	Employment rate	Unemploy-ment rate	
 %	                                            %	                                %	constant USD PPP (refer. year 2015)	
 
 Homicide rate       Mortality rate	    Life expectancy	        Air pollution (level of PM2.5)	Voter turnout	
-per 100-000 people	per 1-000 people	Number of years	        µg/m³	                        %	    
+per 100000 people	per 1000 people	    Number of years	        µg/m³	                        %	    
  
 Broadband access	Internet download speed 2021-Q4	    Number of rooms per person	Perceived social network support 	
 % of households	    deviation from OECD average (%)	    rooms per person	        %	                                
