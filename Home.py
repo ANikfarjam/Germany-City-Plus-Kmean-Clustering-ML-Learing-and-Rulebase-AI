@@ -4,6 +4,7 @@ from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 import Analysis
 from assets import cards, scatterMap
+import Visualization
 
 with open("intro.txt", 'r') as f:
     intro_text = f.read()
