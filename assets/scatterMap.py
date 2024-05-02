@@ -1,6 +1,21 @@
 import pandas as pd
 from Analysis import city_df
 import plotly.express as px
+# general import
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+# Run this if plotly is not installed yet
+#!pip install plotly==5.10.0
+
+
+# plotly library
+from plotly.offline import init_notebook_mode, iplot, plot
+import plotly as py
+init_notebook_mode(connected=True)
+import plotly.graph_objs as go
+
+
 def plot_scatterMap(df, color_column=None, size_column=None):
     global city_df
     fig = px.scatter_mapbox(df, 
@@ -15,3 +30,4 @@ def plot_scatterMap(df, color_column=None, size_column=None):
                         height=1000
                         )
     return fig
+
