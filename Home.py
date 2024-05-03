@@ -15,6 +15,7 @@ navbar = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink("Home", href="/", active='exact')),
         dbc.NavItem(dbc.NavLink("Analysis", href="/Analysis", active='exact')),
+        dbc.NavItem(dbc.NavLink("Visualization", href="/Visualization", active='exact')),
         dbc.DropdownMenu(
             children=[
                 dbc.DropdownMenuItem("More pages", header=True),
@@ -113,6 +114,15 @@ def render_page_content(pathname):
 
     elif pathname == "/assets/page-2":
         return html.P("Oh cool, this is page 2!")
+    
+    elif pathname == "/Visualization":
+        return html.Div([
+            dcc.Graph(figure=Visualization.university_plot_west_vs_east),
+            dcc.Graph(figure=Visualization.gdp_plot_west_vs_east),
+            dcc.Graph(figure=Visualization.transportation_west_vs_east),
+            dcc.Graph(figure=Visualization.germany_rating_west_vs_east),
+        ])
+
 
     # If the user tries to reach a different page, return a 404 message
     return html.Div(
