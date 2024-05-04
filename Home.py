@@ -1,10 +1,13 @@
-#author: Ashkan Nikfarjam
+
+import pandas as pd
+import plotly_express as px
 import dash
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 import Analysis
-from assets import cards, scatterMap
+from assets import cards, scatterMap, chloroplethMap
 import Visualization
+
 
 with open("intro.txt", 'r') as f:
     intro_text = f.read()
@@ -61,8 +64,8 @@ def render_page_content(pathname):
                                     dcc.RadioItems(
                                         id='df-checkbox1',
                                         options=[
-                                            {'label': 'Hospitals', 'value': 'healthcare'},
-                                            {'label': 'Pharmacy', 'value': 'num_pharmacy'}
+                                            {'label': ' Hospitals', 'value': 'healthcare'},
+                                            {'label': ' Pharmacy', 'value': 'num_pharmacy'}
                                         ],
                                         value='healthcare'  # Default value
                                     )
@@ -74,7 +77,7 @@ def render_page_content(pathname):
                                     dcc.RadioItems(
                                         id='df-checkbox2',
                                         options=[
-                                            {'label': 'Rental', 'value': 'rental'}
+                                            {'label': ' Rental', 'value': 'rental'}
                                         ],
                                         #value='rental'
                                     )
@@ -86,7 +89,7 @@ def render_page_content(pathname):
                                     dcc.RadioItems(
                                         id='df-checkbox3',
                                         options=[
-                                            {'label': 'Number of Schools', 'value': 'schools'}
+                                            {'label': ' Number of Schools', 'value': 'schools'}
                                         ],
                                         #value='schools'
                                     )
@@ -98,18 +101,34 @@ def render_page_content(pathname):
                                     dcc.RadioItems(
                                         id='df-checkbox4',
                                         options=[
-                                            {'label': 'Population', 'value': 'population'}
+                                            {'label': ' Population', 'value': 'population'}
                                         ],
                                         #value='population'
                                     )
                                 ],
                                 title="Population"
+                            ),
+                            dbc.AccordionItem(
+                                [
+                                dcc.RadioItems(
+                                    id='religion-selector',
+                                        options=[
+                                            {'label': ' Protestant', 'value': 'Protestant'},
+                                            {'label': ' Catholic', 'value': 'Catholic'},
+                                            {'label': ' Non-religious', 'value': 'Nonrel'},
+                                            {'label': ' Muslim', 'value': 'Muslim'},
+                                            {'label': ' Other Religion', 'value': 'Other'}
+                                        ],
+                                        #value='Protestant'
+                                    )
+                                ],
+                                title = "Religion"
                             )
                         ]
                     )
                 ],style={'width': '250px'})
-                , html.Div(id='graph-container',style={'width':'100%'})  # Add an empty div for the graph
-            ],style={'display': 'flex'})
+                , html.Div(id='graph-container', style={'width': '100%', 'height': '90vh', 'overflow-y': 'auto'})  # Add an empty div for the graph
+            ], style={'display': 'flex'})
         ])
 
     elif pathname == "/assets/page-2":
@@ -138,62 +157,87 @@ def render_page_content(pathname):
    Output("df-checkbox1","value"), 
    Output("df-checkbox2","value"),
    Output("df-checkbox3","value"),
-   Output("df-checkbox4","value")
+   Output("df-checkbox4","value"),
+   Output("religion-selector", "value")
    ], 
    [
    Input("df-checkbox1","value"), 
    Input("df-checkbox2","value"),
    Input("df-checkbox3","value"),
-   Input("df-checkbox4","value")
+   Input("df-checkbox4","value"),
+   Input("religion-selector", "value")
    ]    
 )
-def sync_checkbox(value1, value2, value3, value4):
-    print(value1,value2,value3,value4)
+
+def sync_checkbox(value1, value2, value3, value4, religion_value):
+    print(value1,value2,value3,value4, religion_value)  # For debugging
     ctx = dash.callback_context
     print(ctx.triggered)
     if not ctx.triggered:
         print('here')
-        return value1, value2, value3, value4
+        return value1, value2, value3, value4, religion_value
     
     input_id = ctx.triggered[0]['prop_id']
     input_id = input_id.split(".")[0]
 
     if input_id == "df-checkbox1" and value1 is not None:
-        return value1, None, None, None
+        return value1, None, None, None, None
     elif input_id == "df-checkbox2" and value2 is not None:
-        return None, value2, None, None
+        return None, value2, None, None, None
     elif input_id == "df-checkbox3" and value3 is not None:
-        return None, None, value3, None
+        return None, None, value3, None, None
     elif input_id == "df-checkbox4" and value4 is not None:
-        return None, None, None, value4
+        return None, None, None, value4, None
+    elif input_id == "religion-selector" and religion_value is not None:  # Check for religion selector input
+        return None, None, None, None, religion_value
     else:
         print("unexpected scenario:")
         print("input_id: " + input_id)
-        print("values: " + (value1, value2, value3, value4))
+        print("values: " + (value1, value2, value3, value4, religion_value))
 
 
-@app.callback(Output("graph-container", "children"), [Input("df-checkbox1", "value"), Input("df-checkbox2", "value"), Input("df-checkbox3", "value"), Input("df-checkbox4", "value")])
-def update_graph(value1, value2, value3, value4):
-    print(value1, value2, value3, value4)
+@app.callback(Output("graph-container", "children"),
+               [Input("df-checkbox1", "value"),
+                Input("df-checkbox2", "value"),
+                Input("df-checkbox3", "value"),
+                Input("df-checkbox4", "value"),
+                Input("religion-selector", "value")]) 
+def update_graph(value1, value2, value3, value4, religion_value):
+    print(value1, value2, value3, value4, religion_value)  # For debugging
     # Prioritize the values based on the order of the radio buttons
-    value = value4 or value3 or value2 or value1
+    value = value4 or value3 or value2 or value1 or religion_value
     print(value)
 
     if value == "healthcare":
         graph = dcc.Graph(figure=scatterMap.plot_scatterMap(Analysis.healthCare_df, 'Number of beds', 'Number of Hospitals'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])    
     elif value == "rental":
         graph = dcc.Graph(figure=scatterMap.plot_scatterMap(Analysis.rental_df, 'Price', 'Beds'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
     elif value == "schools":
         graph = dcc.Graph(figure=scatterMap.plot_scatterMap(Analysis.school_df, size_column='Number of schools'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
     elif value == "population":
         graph = dcc.Graph(figure=scatterMap.plot_scatterMap(Analysis.mod_city, size_column='population'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
     elif value == "num_pharmacy":
         graph = dcc.Graph(figure=scatterMap.plot_scatterMap(Analysis.pharmacy_df, size_column='number of pharmecies'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
+    elif value == "Protestant":
+        fig = chloroplethMap.create_choropleth_map(Analysis.religion_df, "assets/germany-states.geojson", "State", religion_value)
+        graph = dcc.Graph(figure=fig)
+    elif value == "Catholic":
+        fig = chloroplethMap.create_choropleth_map(Analysis.religion_df, "assets/germany-states.geojson", "State", religion_value)
+        graph = dcc.Graph(figure=fig)
+    elif value == "Nonrel":
+        fig = chloroplethMap.create_choropleth_map(Analysis.religion_df, "assets/germany-states.geojson", "State", religion_value)
+        graph = dcc.Graph(figure=fig)
+    elif value == "Muslim":
+        fig = chloroplethMap.create_choropleth_map(Analysis.religion_df, "assets/germany-states.geojson", "State", religion_value)
+        graph = dcc.Graph(figure=fig)
+    elif value == "Other":
+        fig = chloroplethMap.create_choropleth_map(Analysis.religion_df, "assets/germany-states.geojson", "State", religion_value)
+        graph = dcc.Graph(figure=fig)
+    else:
+        # Return an empty div if no valid value is selected
+        graph = html.Div()
+
+    return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
     
 
 

@@ -67,3 +67,5 @@ pharmacy = pd.read_csv('./DATA/Helthcare/numberOfPharmecies.csv')
 #print(city_df.head())
 pharmacy_df = pd.merge(pharmacy, city_df.copy() , on='city', how='left')
 print(pharmacy_df.head())
+
+religion_df = pd.read_csv("./DATA/religion/religion.csv")
