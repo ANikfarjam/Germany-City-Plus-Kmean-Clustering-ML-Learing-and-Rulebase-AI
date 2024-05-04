@@ -147,8 +147,30 @@ def render_page_content(pathname):
                                         #value='Population with at least secondary education'  # Default value
                                     )
                                 ],
-                                title="Social Indicators"
-                            )
+                                title="Social Indicators",
+                            ),
+                            dbc.AccordionItem(
+                                [
+                                    dcc.RadioItems(
+                                        id='df-checkbox6',
+                                        options=[
+                                            {'label': 'Education', 'value': 'Education'},
+                                            {'label': 'Jobs', 'value': 'Jobs'},
+                                            {'label': 'Income', 'value': 'Income'},
+                                            {'label': 'Safety', 'value': 'Safety'},
+                                            {'label': 'Health', 'value': 'Health'},
+                                            {'label': 'Environment', 'value': 'Environment'},
+                                            {'label': 'Civic engagement', 'value': 'Civic engagement'},
+                                            {'label': 'Accessibility to services', 'value': 'Accessibility to services'},
+                                            {'label': 'Housing', 'value': 'Housing'},
+                                            {'label': 'Community', 'value': 'Community'},
+                                            {'label': 'Life satisfaction', 'value': 'Life satisfaction'}
+                                        ],
+                                        # value='Education'  # Default value
+                                    )
+                                ],
+                                title="State Ratings #/10"
+                            ),
                         ]
                     )
                 ],style={'width': '250px'})
@@ -178,50 +200,56 @@ def render_page_content(pathname):
         className="p-3 bg-light rounded-3",
     )
 
-@app.callback([
-   Output("df-checkbox1", "value"), 
-   Output("df-checkbox2", "value"),
-   Output("df-checkbox3", "value"),
-   Output("df-checkbox4", "value"),
-   Output("religion-selector", "value"),
-   Output("df-checkbox5", "value")
-   ], 
-   [
-   Input("df-checkbox1", "value"), 
-   Input("df-checkbox2", "value"),
-   Input("df-checkbox3", "value"),
-   Input("df-checkbox4", "value"),
-   Input("religion-selector", "value"),
-   Input("df-checkbox5", "value")
-   ]    
+@app.callback(
+    [
+        Output("df-checkbox1", "value"), 
+        Output("df-checkbox2", "value"),
+        Output("df-checkbox3", "value"),
+        Output("df-checkbox4", "value"),
+        Output("religion-selector", "value"),
+        Output("df-checkbox5", "value"),
+        Output("df-checkbox6", "value")  
+    ], 
+    [
+        Input("df-checkbox1", "value"), 
+        Input("df-checkbox2", "value"),
+        Input("df-checkbox3", "value"),
+        Input("df-checkbox4", "value"),
+        Input("religion-selector", "value"),
+        Input("df-checkbox5", "value"),
+        Input("df-checkbox6", "value")  
+    ]    
 )
-def sync_checkbox(value1, value2, value3, value4, religion_value, social_indicator_value):
-    print(value1, value2, value3, value4, religion_value, social_indicator_value)
+
+def sync_checkbox(value1, value2, value3, value4, religion_value, social_indicator_value, state_ratings):
+    print(value1, value2, value3, value4, religion_value, social_indicator_value, state_ratings)
     ctx = dash.callback_context
     print(ctx.triggered)
     if not ctx.triggered:
         print('here')
-        return value1, value2, value3, value4, religion_value, social_indicator_value
+        return value1, value2, value3, value4, religion_value, social_indicator_value, state_ratings
     
     input_id = ctx.triggered[0]['prop_id']
     input_id = input_id.split(".")[0]
 
     if input_id == "df-checkbox1" and value1 is not None:
-        return value1, None, None, None, None, None
+        return value1, None, None, None, None, None, None
     elif input_id == "df-checkbox2" and value2 is not None:
-        return None, value2, None, None, None, None
+        return None, value2, None, None, None, None, None
     elif input_id == "df-checkbox3" and value3 is not None:
-        return None, None, value3, None, None, None
+        return None, None, value3, None, None, None, None
     elif input_id == "df-checkbox4" and value4 is not None:
-        return None, None, None, value4, None, None
+        return None, None, None, value4, None, None, None
     elif input_id == "religion-selector" and religion_value is not None:
-        return None, None, None, None, religion_value, None
+        return None, None, None, None, religion_value, None, None
     elif input_id == "df-checkbox5" and social_indicator_value is not None:
-        return None, None, None, None, None, social_indicator_value
+        return None, None, None, None, None, social_indicator_value, None
+    elif input_id == "df-checkbox6" and state_ratings is not None:  
+        return None, None, None, None, None, None, state_ratings
     else:
         print("unexpected scenario:")
         print("input_id: " + input_id)
-        print("values: " + (value1, value2, value3, value4, religion_value, social_indicator_value))
+        print("values: " + (value1, value2, value3, value4, religion_value, social_indicator_value, state_ratings))
 
 
 
@@ -231,11 +259,12 @@ def sync_checkbox(value1, value2, value3, value4, religion_value, social_indicat
                 Input("df-checkbox3", "value"),
                 Input("df-checkbox4", "value"),
                 Input("religion-selector", "value"),
-                Input("df-checkbox5", "value")]) 
-def update_graph(value1, value2, value3, value4, religion_value, social_indicator_value):
-    print(value1, value2, value3, value4, religion_value, social_indicator_value)  # For debugging
+                Input("df-checkbox5", "value"),
+                Input("df-checkbox6", "value")]) 
+def update_graph(value1, value2, value3, value4, religion_value, social_indicator_value, state_ratings):
+    print(value1, value2, value3, value4, religion_value, social_indicator_value, state_ratings)  # For debugging
     # Prioritize the values based on the order of the radio buttons
-    value = value4 or value3 or value2 or value1 or religion_value or social_indicator_value
+    value = value4 or value3 or value2 or value1 or religion_value or social_indicator_value or state_ratings
     print(value)
 
     if value == "healthcare":
@@ -255,6 +284,10 @@ def update_graph(value1, value2, value3, value4, religion_value, social_indicato
                    "Homicide rate", "Mortality rate", "Life expectancy", "Air pollution (level of PM2.5)", "Voter turnout", "Broadband access",
                    "Internet download speed 2021-Q4", "Number of rooms per person", "Perceived social network support", "Self assessment of life satisfaction"]:
         fig = chloroplethMap.create_choropleth_map(Analysis.indicators_df, "assets/germany-states.geojson", "State", value)
+        graph = dcc.Graph(figure=fig)
+    elif value in ["Education", "Jobs", "Income", "Safety", "Health", "Environment", "Civic engagement", "Accessibility to services", 
+                   "Housing", "Community", "Life satisfaction"]: #BE CAREFUL OF TABBING HERE IT NEEDS TO BE PERFECT
+        fig = chloroplethMap.create_choropleth_map(Analysis.stateratings_df, "assets/germany-states.geojson", "State", value)
         graph = dcc.Graph(figure=fig)
 
     else:

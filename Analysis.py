@@ -71,3 +71,5 @@ print(pharmacy_df.head())
 religion_df = pd.read_csv("./DATA/religion/religion.csv")
 
 indicators_df = pd.read_csv("./DATA/Sean data - help/Cultural/germany_states_indicators_percentages_other.csv")
+
+stateratings_df = pd.read_csv("./DATA/Sean data - help/Cultural/germany_state_ratings_1-10_various_categories.csv")
