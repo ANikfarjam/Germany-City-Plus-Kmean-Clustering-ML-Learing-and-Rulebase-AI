@@ -178,11 +178,11 @@ gremany_rating_df = gremany_rating_df.drop(['Country', 'Code'], axis=1)
 eastern_germany_states = ['Berlin', 'Brandenburg', 'Mecklenburg-Vorpommern', 'Saxony', 'Saxony-Anhalt', 'Thuringia']
 western_germany_states = ['Baden-Württemberg', 'Bavaria', 'Bremen', 'Hamburg', 'Hesse', 'Lower Saxony', 
                           'North Rhine-Westphalia', 'Rhineland-Palatinate', 'Saarland', 'Schleswig-Holstein']
-eastern_germany_df = gremany_rating_df[gremany_rating_df['Region'].isin(eastern_germany_states)]
-western_germany_df = gremany_rating_df[gremany_rating_df['Region'].isin(western_germany_states)]
+eastern_germany_df = gremany_rating_df[gremany_rating_df['State'].isin(eastern_germany_states)]
+western_germany_df = gremany_rating_df[gremany_rating_df['State'].isin(western_germany_states)]
 
-eastern_germany_df = eastern_germany_df.drop(['Region'], axis=1)
-western_germany_df = western_germany_df.drop(['Region'], axis=1)
+eastern_germany_df = eastern_germany_df.drop(['State'], axis=1)
+western_germany_df = western_germany_df.drop(['State'], axis=1)
 
 west_mean_values = western_germany_df.mean()
 east_mean_values = eastern_germany_df.mean()

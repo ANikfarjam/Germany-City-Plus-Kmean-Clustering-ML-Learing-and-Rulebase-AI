@@ -17,8 +17,8 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callb
 navbar = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink("Home", href="/", active='exact')),
-        dbc.NavItem(dbc.NavLink("Analysis", href="/Analysis", active='exact')),
-        dbc.NavItem(dbc.NavLink("Visualization", href="/Visualization", active='exact')),
+        dbc.NavItem(dbc.NavLink("Geo Analysis", href="/Analysis", active='exact')),
+        dbc.NavItem(dbc.NavLink("State Analysis", href="/Visualization", active='exact')),
         dbc.DropdownMenu(
             children=[
                 dbc.DropdownMenuItem("More pages", header=True),
