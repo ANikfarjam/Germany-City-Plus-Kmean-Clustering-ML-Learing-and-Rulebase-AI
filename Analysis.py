@@ -51,7 +51,7 @@ weather = pd.read_csv("./DATA/Environment/weather.csv")
 public_transportation = pd.read_csv("./DATA/Public Transportation/transportation.csv")
 # # politics
 # politics = pd.read_csv("./DATA/Politics/politics.csv")
-print(public_transportation)
+#print(public_transportation)
 
 
 
@@ -66,10 +66,12 @@ pharmacy = pd.read_csv('./DATA/Helthcare/numberOfPharmecies.csv')
 #rint("pharmecy", pharmacy.head())
 #print(city_df.head())
 pharmacy_df = pd.merge(pharmacy, city_df.copy() , on='city', how='left')
-print(pharmacy_df.head())
+#print(pharmacy_df.head())
 
 religion_df = pd.read_csv("./DATA/religion/religion.csv")
 
 indicators_df = pd.read_csv("./DATA/Sean data - help/Cultural/germany_states_indicators_percentages_other.csv")
 
 stateratings_df = pd.read_csv("./DATA/Sean data - help/Cultural/germany_state_ratings_1-10_various_categories.csv")
+
+politics_df = pd.read_csv("./DATA/Politics/GermanyVoting2021.csv")

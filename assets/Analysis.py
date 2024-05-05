@@ -74,3 +74,5 @@ indicators_df = pd.read_csv("./DATA/Sean data - help/Cultural/germany_states_ind
 
 stateratings_df = pd.read_csv("./DATA/Sean data - help/Cultural/germany_state_ratings_1-10_various_categories.csv")
 #print(stateratings_df.head())
+
+politics_df = pd.read_csv("./DATA/Politics/GermanyVoting2021.csv")
