@@ -24,9 +24,8 @@ navbar = dbc.NavbarSimple(
         dbc.NavItem(dbc.NavLink("State Analysis", href="/Visualization", active='exact')),
         dbc.DropdownMenu(
             children=[
-                dbc.DropdownMenuItem("More pages", header=True),
-                dbc.DropdownMenuItem("something", href="#"),
-                dbc.DropdownMenuItem("something", href="#"),
+                dbc.DropdownMenuItem("More Information", header=True),
+                dbc.DropdownMenuItem("Visit GitHub", href="https://github.com/ANikfarjam/CS133Project"),
                 
             ],
             nav=True,
