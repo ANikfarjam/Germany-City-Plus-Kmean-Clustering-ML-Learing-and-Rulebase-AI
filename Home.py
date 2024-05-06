@@ -7,6 +7,9 @@ import dash_bootstrap_components as dbc
 import Analysis
 from assets import cards, scatterMap, chloroplethMap,Carousel
 import Visualization
+import dash_html_components as html
+
+
 
 
 with open("intro.txt", 'r') as f:
@@ -24,6 +27,7 @@ navbar = dbc.NavbarSimple(
                 dbc.DropdownMenuItem("More pages", header=True),
                 dbc.DropdownMenuItem("something", href="#"),
                 dbc.DropdownMenuItem("something", href="#"),
+                
             ],
             nav=True,
             in_navbar=True,
@@ -201,11 +205,40 @@ def render_page_content(pathname):
     
     elif pathname == "/Visualization":
         return html.Div([
-            dcc.Graph(figure=Visualization.university_plot_west_vs_east),
-            dcc.Graph(figure=Visualization.gdp_plot_west_vs_east),
-            dcc.Graph(figure=Visualization.transportation_west_vs_east),
-            dcc.Graph(figure=Visualization.germany_rating_west_vs_east),
-        ])
+            html.Div([
+                html.H2("University Plot"),
+                dcc.Graph(figure=Visualization.university_plot_west_vs_east),
+            ], className="graph-container"),
+
+            html.Div([
+                html.H2("GDP Comparison"),
+                dcc.Graph(figure=Visualization.gdp_plot_west_vs_east),
+            ], className="graph-container"),
+
+            html.Div([
+                html.H2("Transportation Analysis"),
+                dcc.Graph(figure=Visualization.transportation_west_vs_east),
+            ], className="graph-container"),
+
+            html.Div([
+                html.H2("Germany Rating Comparison"),
+                dcc.Graph(figure=Visualization.germany_rating_west_vs_east),
+            ], className="graph-container"),
+
+            html.Div([
+                html.H2("Rating Summary"),
+                html.Div([
+                    html.H3("Germany Rating for each State"),
+                    Visualization.germany_table(),
+                ]),
+                html.Div([
+                    html.H3("Global Rating for each Country"),
+                    Visualization.global_table(),
+                ]),
+            ], className="summary-container"),
+        ], className="visualization-page")
+
+
 
     elif pathname == "/history":
         return Carousel.history_carousel

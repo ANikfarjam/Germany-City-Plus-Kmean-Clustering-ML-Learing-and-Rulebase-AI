@@ -68,10 +68,13 @@ pharmacy = pd.read_csv('./DATA/Helthcare/numberOfPharmecies.csv')
 pharmacy_df = pd.merge(pharmacy, city_df.copy() , on='city', how='left')
 #print(pharmacy_df.head())
 
-religion_df = pd.read_csv("./DATA/religion/religion.csv")
+religion_df = pd.read_csv("./DATA/Religion/religion.csv")
 
 indicators_df = pd.read_csv("./DATA/Sean data - help/Cultural/germany_states_indicators_percentages_other.csv")
 
 stateratings_df = pd.read_csv("./DATA/Sean data - help/Cultural/germany_state_ratings_1-10_various_categories.csv")
 
 politics_df = pd.read_csv("./DATA/Politics/GermanyVoting2021.csv")
+
+
+
