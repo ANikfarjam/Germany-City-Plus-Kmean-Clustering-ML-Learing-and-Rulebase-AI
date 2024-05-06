@@ -12,6 +12,18 @@ Our solution is a user-friendly Dash app designed to streamline travel planning 
 
 ## Showcase
 
+#### How to Run
+
+- $ `git clone https://github.com/ANikfarjam/CS133Project.git`
+- $ `cd CS133Project`
+- $ `pip install requirements.txt`
+- $ `python3 Home.py`
+- Open your browser of choice and go to `http://127.0.0.1:8050/` (Chrominum based preferred)
+
+#### How to Stop
+
+- `ctrl^C`
+
 ### Landing Page
 
 ![Landing Page](./assets//app_screenshot/image.png)
