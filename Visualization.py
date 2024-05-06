@@ -216,3 +216,29 @@ layout = go.Layout(
 germany_rating_west_vs_east = go.Figure(data=[trace2, trace1], layout=layout) # west vs east rating
 
 ################################################################################################################################
+
+
+# SOME TABLES
+import dash_html_components as html
+
+gremany_rating_df = pd.read_csv("./DATA/Sean data - help/Cultural/germany_state_ratings_1-10_various_categories.csv")
+global_rating_df = pd.read_csv("./DATA/Sean data - help/Cultural/various_countries_ratings_1-10_categories.csv")
+
+# Inside your Analysis.py, assuming you have two data frames named df1 and df2
+df1_table = html.Table([
+    html.Thead(html.Tr([html.Th(col) for col in gremany_rating_df.columns])),
+    html.Tbody([
+        html.Tr([html.Td(gremany_rating_df.iloc[i][col]) for col in gremany_rating_df.columns]) for i in range(len(gremany_rating_df))
+    ])
+])
+def germany_table():
+    return df1_table
+
+df2_table = html.Table([
+    html.Thead(html.Tr([html.Th(col) for col in global_rating_df.columns])),
+    html.Tbody([
+        html.Tr([html.Td(global_rating_df.iloc[i][col]) for col in global_rating_df.columns]) for i in range(len(global_rating_df))
+    ])
+])
+def global_table():
+    return df2_table
