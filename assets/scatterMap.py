@@ -25,7 +25,7 @@ def plot_scatterMap(df, color_column=None, size_column=None):
                         mapbox_style="carto-positron",
                         center={"lat": city_df['lat'].mean(), "lon": city_df['lng'].mean()},
                         zoom=5,
-                        color_continuous_scale="YlOrRd",  # Yellow to Red color scale
+                        color_continuous_scale="Portland",  # Yellow to Red color scale
                         height=1000
                         )
     return fig

@@ -22,7 +22,8 @@ def create_card(state, form_responses):
                         "Average Education Rating: " + str(copy_df.loc[state, 'Education']) + "<br>" +
                         "Average Jobs Rating: " + str(copy_df.loc[state, 'Jobs']) + "<br>" +
                         "Average Income Rating: " + str(copy_df.loc[state, 'Income']) + "<br>" +
-                        "Average Safety Rating: " + str(copy_df.loc[state, 'Safety'])
+                        "Average Safety Rating: " + str(copy_df.loc[state, 'Safety']),
+                        dangerously_allow_html=True
                     ),
                 ]
             ),

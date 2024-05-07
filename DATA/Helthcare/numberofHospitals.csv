@@ -1,63 +1,63 @@
-city,Number of beds,Number of Hospitals
-Aachen,"1,517",1
+City,Number of beds,Number of Hospitals
+Aachen,1517,1
 Amberg,588,1
-Augsburg,"1,6991,741",2
+Augsburg,3440,2
 Bad Berka,728,1
-Bad Oeynhausen,240104,2
-Berlin,"3,0115,856574707525358636160367",9
-Bielefeld,"1,322",1
-Bochum,543485708,3
-Bonn,"1,237236",2
-Brunswick,"1,428",1
+Bad Oeynhausen,344,2
+Berlin,12194,9
+Bielefeld,1322,1
+Bochum,1736,3
+Bonn,1473,2
+Brunswick,1428,1
 Coblenz,201,1
-Cologne,"1,464752300424",4
+Cologne,2940,4
 Dortmund,1422,1
-Dresden,"1,295951619",3
-Düsseldorf,"1,303",1
+Dresden,2865,3
+Düsseldorf,1303,1
 Eisenberg,211,1
-Erfurt,"1,300",1
-Erlangen,"1,378",1
-Essen,"1,260573",2
+Erfurt,1300,1
+Erlangen,1378,1
+Essen,1833,2
 Esslingen am Neckar,655,1
-Frankfurt am Main,"1,297509334697",4
-Freiburg,"2,169",1
+Frankfurt am Main,2837,4
+Freiburg,2169,1
 Greifswald,919,1
-Göttingen,"1,554",1
-Halle (Saale),984510,2
-Hamburg,"1,436665656754569138657605307",9
-Hanover,"1,520562",2
-Heidelberg,"1,991",1
-Homburg,"1,202",1
-Jena,"1,396",1
-Karlsruhe,"1,057",1
-Kassel,1281433225362195,5
-Kiel,"1,098",1
+Göttingen,1554,1
+Halle (Saale),1494,2
+Hamburg,5787,9
+Hanover,2082,2
+Heidelberg,1991,1
+Homburg,1202,1
+Jena,1396,1
+Karlsruhe,1057,1
+Kassel,2496,5
+Kiel,1098,1
 Koblenz,506,1
 Langen,433,1
-Leipzig,"1,345",1
-Ludwigsburg,"1,005",1
+Leipzig,1345,1
+Ludwigsburg,1005,1
 Ludwigshafen,963,1
 Lübbecke,459,1
-Lübeck,"1,098",1
-Magdeburg,"1,087",1
-Mainz,"1,662",1
-Mannheim,"1,352",1
-Marburg,"1,098",1
-Minden,91024,2
-Munich,"2,0501,091959592545",5
+Lübeck,1098,1
+Magdeburg,1087,1
+Mainz,1662,1
+Mannheim,1352,1
+Marburg,1098,1
+Minden,934,2
+Munich,5237,5
 Mönchengladbach,499,1
-Münster,"1,457620",2
+Münster,2077,2
 Nienburg,300,1
-Nuremberg,"1,291909244",3
+Nuremberg,2444,3
 Rahden,78,1
-Regensburg,833905,2
-Rostock,"1,028",1
+Regensburg,1738,2
+Rostock,1028,1
 Stolzenau,63,1
 Straubing,450,1
-Stuttgart,"6737611,347",3
+Stuttgart,2781,3
 Trier,632,1
-Tübingen,"1,559",1
-Ulm,"1,150443496",3
+Tübingen,1559,1
+Ulm,2089,3
 Villingen-Schwenningen,782,1
 Westerstede,510,1
-Würzburg,"1,438",1
+Würzburg,1438,1
