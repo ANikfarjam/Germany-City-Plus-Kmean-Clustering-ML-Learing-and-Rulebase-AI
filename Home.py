@@ -17,6 +17,8 @@ with open("intro.txt", 'r') as f:
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
 
+server = app.server #for hosting on Render.com
+
 navbar = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink("Home", href="/", active='exact')),
