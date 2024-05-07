@@ -11,7 +11,7 @@ def create_card(state, form_responses):
     [_, world_df] = list(initialize(form_responses))
     copy_df = world_df.copy()
     copy_df.set_index('Region', inplace=True)
-    print(copy_df)
+    # print(copy_df)
     card = dbc.Card(
         [
             dbc.CardHeader(state),
@@ -32,10 +32,15 @@ def create_card(state, form_responses):
     return card
 #recomnedation container
 def create_container(form_responses):
-    [city_df, States] = list(initialize(form_responses))
-    cards = [create_card(state,form_responses) for state in States.Region.to_list()]
+    [city_df, States] = list(recommend(form_responses))
+    container_r = html.Div([
+        html.Div([create_card(state,form_responses) for state in States.Region.to_list()]),
+        city_table(city_df),
+    ], style={'display': 'flex'})
+    print("FINISHED CREATING")
+    #cards = [create_card(state,form_responses) for state in States.Region.to_list()]
     #table = city_table(city_df)
-    return html.Div(cards, style={'display': 'flex'})#, 'flexDirection': 'row'})
+    return container_r
 
 def city_table(df):
     cp_df = df.copy()
@@ -45,17 +50,19 @@ def city_table(df):
     health = pd.read_csv('./DATA/Helthcare/numberofHospitals.csv')
     health2 = pd.read_csv('./DATA/Helthcare/numberOfPharmecies.csv')
 
-    merge_df = pd.merge(cp_df, cities_education, on='city', how='left')
-    merge_df = pd.merge(merge_df, health, on='city', how='left')
-    merge_df = pd.merge(merge_df, health2, on='city', how='left')
+    merge_df = pd.merge(cp_df, cities_education, on='city', how='left').reset_index()
+    merge_df = pd.merge(merge_df, health, on='city', how='left').reset_index()
+    #merge_df = pd.merge(merge_df, health2, on='city', how='left').reset_index()
 
     merge_df.fillna(0, inplace=True)
     
+    print(merge_df)
+    
     # Drop the existing index without inserting it as a new column
-    merge_df.reset_index(drop=True, inplace=True)
+   
 
-    dic = merge_df.to_dict()
-    return dbc.Table(dic, striped=True)
+    
+    return dbc.Table.from_dataframe(merge_df, striped=True)
 
 
 #work

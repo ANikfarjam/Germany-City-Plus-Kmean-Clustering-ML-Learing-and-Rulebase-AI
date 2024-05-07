@@ -1,4 +1,5 @@
 
+from urllib import response
 import pandas as pd
 import plotly.express as px
 import dash
@@ -249,9 +250,13 @@ def render_page_content(pathname):
     elif pathname == "/Questionnaire":
         return form
     elif pathname == "/NextStep":
+        # return html.P("TO BE UPDATED")
         # text = dbc.Label("hello",id='nextStepText') 
         return recomend_resul.create_container(form_responses)
-    # If the user tries to reach a different page, return a 404 message
+        # container = recomend_resul.create_container(form_responses)
+        #print(container)
+        # return html.Div(container)
+    
     return html.Div(
         [
             html.H1("404: Not found", className="text-danger"),

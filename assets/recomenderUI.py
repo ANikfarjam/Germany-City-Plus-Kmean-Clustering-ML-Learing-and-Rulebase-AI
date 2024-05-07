@@ -144,7 +144,7 @@ submit_button = html.Button('Submit Form', id='submit-button',n_clicks=0)
 next = dbc.Button("Next Step", href='/NextStep')
 
 response_element = html.Div([
-    form_responses,
+    f"{form_responses}",
     html.Div(id="form-responses")  # Display form responses
 ])
 
