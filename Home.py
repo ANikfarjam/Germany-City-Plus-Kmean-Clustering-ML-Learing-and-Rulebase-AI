@@ -26,6 +26,7 @@ navbar = dbc.NavbarSimple(
             children=[
                 dbc.DropdownMenuItem("More Information", header=True),
                 dbc.DropdownMenuItem("Visit GitHub", href="https://github.com/ANikfarjam/CS133Project"),
+                dbc.DropdownMenuItem("More Plots", href="https://colab.research.google.com/drive/16BnhGA7M3NFMUK-RDnYRq9ajwf3cfX-4?usp=sharing")
                 
             ],
             nav=True,
@@ -356,6 +357,6 @@ def update_graph(value1, value2, value3, value4, religion_value, social_indicato
     return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
     
 
-
+app.title = 'Germany City+' 
 if __name__ == '__main__':
     app.run_server(debug=True)
