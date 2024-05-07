@@ -205,12 +205,6 @@ def render_page_content(pathname):
         return html.P("Oh cool, this is page 2!")
     
     elif pathname == "/Visualization":
-        
-        
-        
-    #############################
-    ### AI & ML TO BE UPDATED ###
-    #############################
         return html.Div([
             html.Div([
                 html.H2("University Plot"),
@@ -244,9 +238,9 @@ def render_page_content(pathname):
                 ]),
             ], className="summary-container"),
         ], className="visualization-page")
-    elif pathname == "/aiml":
-        return html.P("TO BE UPDATED!!!")
 
+    elif pathname == "/aiml":
+        return html.P("TO BE UPDATED")
 
     elif pathname == "/history":
         return Carousel.history_carousel
