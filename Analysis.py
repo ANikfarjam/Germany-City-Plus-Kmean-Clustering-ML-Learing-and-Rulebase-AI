@@ -23,17 +23,17 @@ german_cities_by_state = {
 }
 city_df = pd.read_csv("./DATA/German cities.csv")
 #creating Rentals df for map
-rental = pd.read_csv("./DATA/Rentals/cityRentals.csv")
-rental.Price = rental.Price.astype(int)
-rental  = rental.groupby(by=['Name','Beds']).Price.mean().reset_index()
+#rental = pd.read_csv("./DATA/Rentals/cityRentals.csv")
+#rental.Price = rental.Price.astype(int)
+#rental  = rental.groupby(by=['Name','Beds']).Price.mean().reset_index()
 #print(rental)
-rental_pd = pd.DataFrame(rental).reset_index()
+#rental_pd = pd.DataFrame(rental).reset_index()
 # Merge DataFrames on the 'city' column
-rental_df = pd.merge(rental, city_df.copy(), how='left', left_on='Name', right_on='city')
+#rental_df = pd.merge(rental, city_df.copy(), how='left', left_on='Name', right_on='city')
 
 # Drop the redundant 'city' column
-rental_df.drop(columns=['city'], inplace=True)
-rental_df = rental_df.rename({'Price':'Average Price'})
+#rental_df.drop(columns=['city'], inplace=True)
+#rental_df = rental_df.rename({'Price':'Average Price'})
 #print(rental_df.head())
 #creating healthcare data frame for the map
 HealthCare_data = pd.read_csv("./DATA/Helthcare/numberofHospitals.csv")

@@ -1,13 +1,15 @@
 
 import pandas as pd
-import plotly_express as px
+import plotly.express as px
 import dash
 from dash import Dash, dcc, html, Input, Output, State
 import dash_bootstrap_components as dbc
+from matplotlib import table
 import Analysis
-from assets import cards, scatterMap, chloroplethMap,Carousel
+from assets import cards, scatterMap, chloroplethMap,Carousel, recomend_resul
 import Visualization
 import dash_html_components as html
+from assets.recomenderUI import form,form_responses
 
 
 with open("intro.txt", 'r') as f:
@@ -244,7 +246,11 @@ def render_page_content(pathname):
 
     elif pathname == "/history":
         return Carousel.history_carousel
-
+    elif pathname == "/Questionnaire":
+        return form
+    elif pathname == "/NextStep":
+        # text = dbc.Label("hello",id='nextStepText') 
+        return recomend_resul.create_container(form_responses)
     # If the user tries to reach a different page, return a 404 message
     return html.Div(
         [
@@ -362,5 +368,61 @@ def update_graph(value1, value2, value3, value4, religion_value, social_indicato
     
 
 app.title = 'Germany City+' 
+#forms call backs
+# Callbacks to unlock the number selection slider
+# Callbacks to update form responses list
+@app.callback(
+    Output("num-people-slider-container", "style"),
+    [Input("num-people-dropdown", "value")]
+)
+def update_num_people_visibility(purpose_value):
+    if purpose_value == "family_others":  # Only show slider if "Family/Others" is selected
+        return {"display": "block"}
+    else:
+        return {"display": "none"}
+#call back for make th enumber of people slider visible
+@app.callback(
+    Output("num-people-label", "children"),
+    [Input("num-people-dropdown", "value")]
+)
+def update_num_people_label(value):
+    if value == "family_others":
+        return "If yes, how many people?"
+    else:
+        return "If yes, how many family members/others?"
+
+# Callback to update form responses list when the submit button is clicked
+element_ids = [
+    "purpose-checklist",
+    "num-people-dropdown",
+    "num-people-slider",
+    "min-price",
+    "max-price",
+    "education-pref-slider",
+    "jobs-pref-slider",
+    "income-pref-slider",
+    "safety-pref-slider",
+    "health-pref-slider",
+    "environment-pref-slider",
+    "civic-engagement-pref-slider",
+    "accessibility-pref-slider",
+    "housing-pref-slider",
+    "community-pref-slider",
+    "life-satisfaction-pref-slider"
+]
+@app.callback(
+    Output("form-responses", "children"),
+    [Input("submit-button", "n_clicks")],
+    [State(component_id, "value") for component_id in element_ids]
+)
+def update_form_responses(n_clicks, *args):
+    
+    if n_clicks > 0:
+       form_responses.append(args)
+       print(form_responses)  # Print form responses
+       return f"Form submitted. Please proceed to the next step. Responses: {form_responses}"
+    else:
+        return ""
+
 if __name__ == '__main__':
     app.run_server(debug=True)

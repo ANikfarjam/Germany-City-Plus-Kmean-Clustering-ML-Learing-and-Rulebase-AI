@@ -29,7 +29,7 @@ questionare_card = dbc.Card(
                     "We rocemmend you to fill up these questions to start",
                     className="card-text",
                 ),
-                dbc.Button("Start", color="primary"),
+                dbc.Button("Start", color="primary", href="/Questionnaire"),
             ]
         ),
     ],

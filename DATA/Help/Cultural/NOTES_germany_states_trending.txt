@@ -1,0 +1,13 @@
++ : the region has shown progress in this  topic
+~ : the region has not changed greatly in this topic 
+-  : the region has shown decline in this topic
+..  : due to missing data, change cannot be shown 
+
+Education	        Jobs	            Income	            Safety	            
+Trend [2010-2021]	Trend [2010-2021]	Trend [2010-2021]	Trend [2010-2021]	
+
+Health	            Environment	        Civic engagement	Accessiblity to services
+Trend [2010-2021]	Trend [2010-2021]	Trend [2010-2021]	Trend [not available]	
+
+Housing	            Community	            Life satisfaction
+Trend [2010-2021]	Trend [not available]	Trend [not available]

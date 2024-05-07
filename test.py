@@ -1,191 +1,165 @@
-#author: Ashkan Nikfarjam
-from cProfile import label
-import dash
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, State
 import dash_bootstrap_components as dbc
-import Analysis
-from assets import cards, scatterMap
-
-with open("intro.txt", 'r') as f:
-    intro_text = f.read()
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
 
-navbar = dbc.NavbarSimple(
-    children=[
-        dbc.NavItem(dbc.NavLink("Home", href="/", active='exact')),
-        dbc.NavItem(dbc.NavLink("Analysis", href="/Analysis", active='exact')),
-        dbc.DropdownMenu(
-            children=[
-                dbc.DropdownMenuItem("More pages", header=True),
-                dbc.DropdownMenuItem("something", href="#"),
-                dbc.DropdownMenuItem("something", href="#"),
+# Define an empty list to store form responses
+form_responses = []
+
+# Form components
+purpose = html.Div([
+    dbc.Label("What is your purpose of moving?", html_for="purpose"),
+    dcc.Checklist(
+        id="purpose-checklist",
+        options=[
+            {"label": "Work", "value": 'work'},
+            {"label": "Study", "value": 'study'},
+            {"label": "Marriage", "value": 'marriage'},
+            {"label": "Emigration", "value": 'emigration'},
+        ],
+        value=['work'],
+    ),
+], className="mb-3",)
+
+num_people = html.Div(
+    [
+        dbc.Label("Are you moving alone or with family/friends/partner?", html_for="numppl"),
+        dcc.Dropdown(
+            id="num-people-dropdown",
+            options=[
+                {"label": "Alone", "value": "alone"},
+                {"label": "Family/Others", "value": "family_others"},
             ],
-            nav=True,
-            in_navbar=True,
-            label="More",
+            value="alone",
         ),
     ],
-    brand="Germany ---",
-    brand_href="#",
-    color="dark",
-    dark=True,
+    className="mb-3",
 )
 
-content = html.Div(id="page-content")
-app.layout = html.Div([dcc.Location(id="url"), navbar, content])
+np_slider = html.Div(
+    [
+        dbc.Label("If yes, how many people?", html_for="range-slider", id="num-people-label"),
+        dcc.Slider(id="num-people-slider", min=0, max=10, step=1, value=2),
+    ],
+    id="num-people-slider-container",
+    className="mb-3",
+)
 
-@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
-def render_page_content(pathname):
-    if pathname == "/":
-        return html.Div([
-            html.Div([
-                html.Img(src="assets/walp.webp", style={'max-height': '50vh', 'width': '100%', 'object-fit': 'cover'}),
-                html.P(intro_text, style={'padding': '32px 48px'}),
-            ]),
-            html.Div([
-                html.Div(cards.history_card, style={'margin-right': '10px'}),
-                html.Div(cards.questionare_card, style={'margin-left': '10px'}),
-            ], style={'display': 'flex'}),
-        ], style={'display': 'flex', 'flex-direction': 'column', 'justify-content': 'center', 'align-items': 'center', 'height': '100vh'})
-
-    elif pathname == "/Analysis":
-        return html.Div([
-            html.Div([
-                html.Div(id='map selector', children=[
-                    dbc.Accordion(
-                        [
-                            dbc.AccordionItem(
-                                [
-                                    dcc.RadioItems(
-                                        id='df-checkbox1',
-                                        options=[
-                                            {'label': 'Hospitals', 'value': 'healthcare'},
-                                            {'label': 'Pharmacy', 'value': 'num_pharmacy'}
-                                        ],
-                                        value='healthcare'  # Default value
-                                    )
-                                ],
-                                title="Healthcare"
-                            ),
-                            dbc.AccordionItem(
-                                [
-                                    dcc.RadioItems(
-                                        id='df-checkbox2',
-                                        options=[
-                                            {'label': 'Rental', 'value': 'rental'}
-                                        ],
-                                        #value='rental'
-                                    )
-                                ],
-                                title="Rental"
-                            ),
-                            dbc.AccordionItem(
-                                [
-                                    dcc.RadioItems(
-                                        id='df-checkbox3',
-                                        options=[
-                                            {'label': 'Number of Schools', 'value': 'schools'}
-                                        ],
-                                        #value='schools'
-                                    )
-                                ],
-                                title="Education"
-                            ),
-                            dbc.AccordionItem(
-                                [
-                                    dcc.RadioItems(
-                                        id='df-checkbox4',
-                                        options=[
-                                            {'label': 'Population', 'value': 'population'}
-                                        ],
-                                        #value='population'
-                                    )
-                                ],
-                                title="Population"
-                            )
-                        ]
-                    )
-                ],style={'width': '250px'})
-                , html.Div(id='graph-container',style={'width':'100%'})  # Add an empty div for the graph
-            ],style={'display': 'flex'})
-        ])
-
-    elif pathname == "/assets/page-2":
-        return html.P("Oh cool, this is page 2!")
-
-    # If the user tries to reach a different page, return a 404 message
-    return html.Div(
+# Rental Preferences
+rentals = html.Div(
         [
-            html.H1("404: Not found", className="text-danger"),
-            html.Hr(),
-            html.P(f"The pathname {pathname} was not recognised..."),
+            dbc.Label("Rental Preferences:", html_for="range-slider", id="rental-label"),
+            html.Div(
+                [
+                    dbc.Label("Min", width="auto"),
+                    dbc.Col(
+                        dbc.Input(id="min-price", type="number", placeholder="min price"),
+                        className="me-3",
+                    ),
+                    dbc.Label("Max", width="auto"),
+                    dbc.Col(
+                        dbc.Input(id="max-price", type="number", placeholder="max price"),
+                        className="me-3",
+                    )
+        ],)
         ],
-        className="p-3 bg-light rounded-3",
-    )
-
-@app.callback([
-   Output("df-checkbox1","value"), 
-   Output("df-checkbox2","value"),
-   Output("df-checkbox3","value"),
-   Output("df-checkbox4","value")
-   ], 
-   [
-   Input("df-checkbox1","value"), 
-   Input("df-checkbox2","value"),
-   Input("df-checkbox3","value"),
-   Input("df-checkbox4","value")
-   ]    
+        className="g-2",
 )
-def sync_checkbox(value1, value2, value3, value4):
-    print(value1,value2,value3,value4)
-    ctx = dash.callback_context
-    print(ctx.triggered)
-    if not ctx.triggered:
-        print('here')
-        return value1, value2, value3, value4
-    
-    input_id = ctx.triggered[0]['prop_id']
-    input_id = input_id.split(".")[0]
 
-    if input_id == "df-checkbox1" and value1 is not None:
-        return value1, None, None, None
-    elif input_id == "df-checkbox2" and value2 is not None:
-        return None, value2, None, None
-    elif input_id == "df-checkbox3" and value3 is not None:
-        return None, None, value3, None
-    elif input_id == "df-checkbox4" and value4 is not None:
-        return None, None, None, value4
+# Preferences
+preferences = html.Div(
+    [
+        dbc.Label("Please rate how important the following categories are to you.", id="preference-intro-label"),
+        html.Div([
+            # Environment
+            dbc.Label("Environment:", id="preference-slider-environment"),
+            dcc.Slider(id="environment-pref-slider", min=0, max=10, step=1, value=2),
+        ], className="mb-3"),
+        html.Div([
+            # Civic engagement
+            dbc.Label("Civic engagement:", id="preference-slider-civic-engagement"),
+            dcc.Slider(id="civic-engagement-pref-slider", min=0, max=10, step=1, value=2),
+        ], className="mb-3"),
+        html.Div([
+            # Safety
+            dbc.Label("Safety:", id="preference-slider-safety"),
+            dcc.Slider(id="safety-pref-slider", min=0, max=10, step=1, value=2),
+        ], className="mb-3"),
+        html.Div([
+            # Community
+            dbc.Label("Community:", id="preference-slider-community"),
+            dcc.Slider(id="community-pref-slider", min=0, max=10, step=1, value=2),
+        ], className="mb-3"),
+        html.Div([
+            # Life satisfaction
+            dbc.Label("Life satisfaction:", id="preference-slider-life-satisfaction"),
+            dcc.Slider(id="life-satisfaction-pref-slider", min=0, max=10, step=1, value=2),
+        ], className="mb-3"),
+        html.Div([
+            # Religious preferences
+            dbc.Label("Religious preferences:", id="preference-slider-religious-preferences"),
+            dcc.Checklist(
+                id="religious-preferences",
+                options=[
+                    {"label": "Protestant", "value": 'Protestant'},
+                    {"label": "Catholic", "value": 'Catholic'},
+                    {"label": "Non-religious", "value": 'Non-religious'},
+                    {"label": "Other", "value": 'Other'},
+                    {"label": "Doesn't matter", "value": 'NA'},
+                ],
+                value=['Protestant'],
+            ),
+        ], className="mb-3"),
+    ],
+    id="preferences-slider-container",
+    className="mb-3",
+)
+
+submit_button = html.Button('Submit Form', id='submit-button', n_clicks=0)
+
+form = dbc.Form([purpose, num_people, np_slider, rentals, preferences, submit_button])
+
+# Layout
+app.layout = html.Div([
+    dcc.Location(id="url"),
+    form,
+    html.Div(id="form-responses")  # Display form responses
+])
+
+# Callbacks to update form responses list
+@app.callback(
+    Output("num-people-slider-container", "style"),
+    [Input("num-people-dropdown", "value")]
+)
+def update_num_people_visibility(purpose_value):
+    if purpose_value == "family_others":  # Only show slider if "Family/Others" is selected
+        return {"display": "block"}
     else:
-        print("unexpected scenario:")
-        print("input_id: " + input_id)
-        print("values: " + (value1, value2, value3, value4))
+        return {"display": "none"}
 
+@app.callback(
+    Output("num-people-label", "children"),
+    [Input("num-people-dropdown", "value")]
+)
+def update_num_people_label(value):
+    if value == "family_others":
+        return "If yes, how many people?"
+    else:
+        return "If yes, how many family members/others?"
 
-@app.callback(Output("graph-container", "children"), [Input("df-checkbox1", "value"), Input("df-checkbox2", "value"), Input("df-checkbox3", "value"), Input("df-checkbox4", "value")])
-def update_graph(value1, value2, value3, value4):
-    print(value1, value2, value3, value4)
-    # Prioritize the values based on the order of the radio buttons
-    value = value4 or value3 or value2 or value1
-    print(value)
-
-    if value == "healthcare":
-        graph = dcc.Graph(figure=scatterMap.plot_scatterMap(Analysis.healthCare_df, 'Number of beds', 'Number of Hospitals'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])    
-    elif value == "rental":
-        graph = dcc.Graph(figure=scatterMap.plot_scatterMap(Analysis.rental_df, 'Price', 'Beds'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
-    elif value == "schools":
-        graph = dcc.Graph(figure=scatterMap.plot_scatterMap(Analysis.school_df, size_column='Number of schools'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
-    elif value == "population":
-        graph = dcc.Graph(figure=scatterMap.plot_scatterMap(Analysis.mod_city, size_column='population'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
-    elif value == "num_pharmacy":
-        graph = dcc.Graph(figure=scatterMap.plot_scatterMap(Analysis.pharmacy_df, size_column='number of pharmecies',label=['city','number of pharmecies']))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
-    
-
+# Callback to update form responses list when the submit button is clicked
+@app.callback(
+    Output("form-responses", "children"),
+    [Input("submit-button", "n_clicks")],
+    [State(component_id, "value") for component_id in ["purpose-checklist", "num-people-dropdown", "num-people-slider", "min-price", "max-price", "environment-pref-slider", "civic-engagement-pref-slider", "safety-pref-slider", "community-pref-slider", "life-satisfaction-pref-slider", "religious-preferences"]]
+)
+def update_form_responses(n_clicks, *args):
+    if n_clicks > 0:
+        form_responses.append(args)
+        print(form_responses)  # Print form responses
+        return f"Form submitted. Responses: {form_responses}"
+    else:
+        return ""
 
 if __name__ == '__main__':
     app.run_server(debug=True)

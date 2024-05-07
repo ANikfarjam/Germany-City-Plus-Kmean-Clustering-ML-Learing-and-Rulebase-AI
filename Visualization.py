@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 # plotly library
 from plotly.offline import init_notebook_mode, iplot, plot
 import plotly as py
-init_notebook_mode(connected=True)
 import plotly.graph_objs as go
 
 ''' The purposes of these plots are to show the difference between Western & Eastern Germany for some of the selected attributes
@@ -22,7 +21,7 @@ import plotly.graph_objs as go
 #############
 # EDUCATION # 
 #############
-univ_url = "https://raw.githubusercontent.com/ANikfarjam/CS133Project/main/DATA/Education/unvercities.csv"
+univ_url = "./DATA/Education/unvercities.csv"
 univ_df = pd.read_csv(univ_url)
 
 western_germany_cities = [
@@ -65,8 +64,8 @@ university_plot_west_vs_east = go.Figure(data = data, layout = layout) # univers
 # GDP #
 #######
 
-income_url = "https://raw.githubusercontent.com/ANikfarjam/CS133Project/main/DATA/Income/city_income.csv"
-income_df = pd.read_csv(income_url)
+#income_url = "./DATA/Income/city_income.csv"
+income_df = pd.read_csv("./DATA/Income/city_income.csv")
 
 income_df = income_df.sort_values(['GDP in Billions'], ascending=False)
 income_df = income_df[0:20]
@@ -114,7 +113,7 @@ gdp_plot_west_vs_east = go.Figure(data=[trace2, trace1], layout=layout) # GDP pl
 # TRANSPORTATION # 
 ##################
 
-public_transportation_url = "https://raw.githubusercontent.com/ANikfarjam/CS133Project/main/DATA/Public%20Transportation/transportation.csv"
+public_transportation_url = "./DATA/Public Transportation/transportation.csv"
 public_transportation = pd.read_csv(public_transportation_url)
 import pandas as pd
 import plotly.graph_objs as go
@@ -169,8 +168,8 @@ transportation_west_vs_east = go.Figure(data=[trace2, trace1], layout=layout) # 
 # GEMANY east vs west #
 #######################
 
-germany_rating_url = "https://raw.githubusercontent.com/ANikfarjam/CS133Project/main/DATA/Sean%20data%20-%20help/Cultural/germany_state_ratings_1-10_various_categories.csv"
-global_rating_url = "https://raw.githubusercontent.com/ANikfarjam/CS133Project/main/DATA/Sean%20data%20-%20help/Cultural/various_countries_ratings_1-10_categories.csv"
+germany_rating_url = "./DATA/Sean data - help/Cultural/germany_state_ratings_1-10_various_categories.csv"
+global_rating_url = "./DATA/Sean data - help/Cultural/various_countries_ratings_1-10_categories.csv"
 
 gremany_rating_df = pd.read_csv(germany_rating_url)
 

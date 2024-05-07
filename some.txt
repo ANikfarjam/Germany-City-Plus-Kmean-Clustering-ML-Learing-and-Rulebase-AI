@@ -1,97 +1,171 @@
-#Author: Ashkan Nikfarjam
-from dash import Dash, dcc, html, Input, Output
-import dash_bootstrap_components as dbc #a library and package to create nav bar and other components  
+#author: Ashkan Nikfajram, Sean Hsieh, Ryan Fernald
+#prepimg data for ML training
+import pandas as pd
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+import sklearn.decomposition
 import plotly.express as px
-import Analysis
-
-with open("intro.txt",'r') as f:
-    intro_text = f.read()
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
-
-navbar = dbc.NavbarSimple(
-    children=[
-        dbc.NavItem(dbc.NavLink("Home", href="/", active='exact')),
-        dbc.NavItem(dbc.NavLink("Analysis", href="/Analysis", active='exact')),
-        dbc.DropdownMenu(
-            children=[
-                dbc.DropdownMenuItem("More pages", header=True),
-                dbc.DropdownMenuItem("something", href="#"),
-                dbc.DropdownMenuItem("something", href="#"),
-            ],
-            nav=True,
-            in_navbar=True,
-            label="More",
+import numpy as np
+import plotly.graph_objects as go
+import plotly.io as pio
+from sqlalchemy import true
+#the result of clustering gets graphed using this function
+#inputed df has to be transformed into 3dimention
+def plot_clustered(df):
+    states_clustered_fig = go.Figure(data=[go.Scatter3d(
+        x=df[0],  # PC1 values
+        y=df[1],  # PC2 values
+        z=df[2],  # PC3 values
+        mode='markers',
+        marker=dict(
+            size=12,
+            color=X_encoded['Cluster'],  # Color by cluster
+            colorscale='Viridis',  # Choose colorscale
+            opacity=0.8
         ),
-    ],
-    brand="Germany ---",
-    brand_href="#",
-    color="dark",
-    dark=True,
-)
+        text=X_encoded['Region'],  # Display region name on each point
+    )])
 
-content = html.Div(id="page-content")
-app.layout = html.Div([dcc.Location(id="url"), navbar, content])
-
-@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
-def render_page_content(pathname):
-    if pathname == "/":
-         return html.Div([
-        html.Div([
-            html.P(intro_text, style={'width': '50%'}),  
-            html.Div([
-                html.Iframe(
-                    src='https://docs.google.com/presentation/d/e/2PACX-1vTN00ZBzwqmcQe5cbG1XK4NeaUgCE-KtU2NgeB5VwlBoiO2nw5noUO1LewV_Ed01w/embed?start=false&loop=false&delayms=3000',
-                    width='800px',
-                    height='500px'
-                ),
-            ], style={'display': 'flex', 'alignItems': 'center'}),  # Centering the iframe horizontally
-        ], style={'display': 'flex', 'flexDirection': 'row'}),
-    ])
-
-    elif pathname == "/Analysis":
-        return html.Div([
-            html.Div([
-                html.Div(id='df_checkBox_container', children=[
-                    dcc.RadioItems(
-                        id='df-checkbox',
-                        options=[
-                            {'label': 'Healthcare', 'value': 'healthcare'},
-                            {'label': 'Rental', 'value': 'rental'},
-                            {'label': 'Number of Schools', 'value': 'schools'},
-                            {'label': 'Population', 'value': 'population'}
-                        ],
-                        value='healthcare'  # Default value
-                    )
-                ]),
-                html.Div(id='graph-container')  # Add an empty div for the graph
-            ])
-        ])
-    elif pathname == "/assets/page-2":
-        return html.P("Oh cool, this is page 2!")
-    # If the user tries to reach a different page, return a 404 message
-    return html.Div(
-        [
-            html.H1("404: Not found", className="text-danger"),
-            html.Hr(),
-            html.P(f"The pathname {pathname} was not recognised..."),
-        ],
-        className="p-3 bg-light rounded-3",
+    # Update axis labels
+    states_clustered_fig.update_layout(
+        scene=dict(
+            xaxis=dict(title='X Axis', tickvals=[], ticktext=[]),  # Hide x-axis numbers
+            yaxis=dict(title='Y Axis', tickvals=[], ticktext=[]),  # Hide y-axis numbers
+            zaxis=dict(title='Z Axis', tickvals=[], ticktext=[]),  # Hide z-axis numbers
+        )
     )
 
-@app.callback(Output("graph-container", "children"), [Input("df-checkbox", "value")])
-def update_graph(value):
-    if value == "healthcare":
-        graph = dcc.Graph(figure=Analysis.scatterMap(Analysis.healthCare_df, 'Number of beds', 'Number of Hospitals'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
-    elif value == "rental":
-        graph = dcc.Graph(figure=Analysis.scatterMap(Analysis.rental_df, 'Price', 'Beds'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
-    elif value == "schools":
-        graph = dcc.Graph(figure=Analysis.scatterMap(Analysis.school_df, size_column='Number of schools'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
-    elif value == "population":
-        graph = dcc.Graph(figure=Analysis.scatterMap(Analysis.mod_city, size_column='population'))
-        return html.Div([html.Div(id='map', style={'width': '100%'}), graph])
+    return states_clustered_fig
 
-if __name__=='__main__':
-    app.run_server(debug=True)
+#importing german cities all the DFs gets merged based on the keys of this DF
+set2 = pd.read_csv('resampling_germany_ratings.csv')
+#set2 = set2.groupby(by='Region').mean().reset_index()
+
+
+#finde number of oprimal cluster
+def find_optimal_clusters(data, max_clusters=10):
+    """
+    Finds the optimal number of clusters using the elbow method.
+    
+    Args:
+    - data: The dataset for clustering.
+    - max_clusters: Maximum number of clusters to consider.
+    
+    Returns:
+    - optimal_n_clusters: The optimal number of clusters.
+    """
+    sse = []  # Sum of squared distances for each number of clusters
+    for k in range(1, max_clusters + 1):
+        kmeans = KMeans(n_clusters=k, random_state=42)
+        kmeans.fit(data)
+        sse.append(kmeans.inertia_)  # SSE for each k
+    
+    # Calculate the first derivative of SSE to find the elbow point
+    first_derivative = np.diff(sse)
+    
+    # Find the index of the elbow point
+    elbow_index = np.argmin(first_derivative) + 1  # Add 1 to account for zero-based indexing
+    
+    optimal_n_clusters = elbow_index + 1  # Add 1 to account for the zero-based index
+    
+    return optimal_n_clusters
+###################################################################################
+#trainint
+###################################################################################
+#set up traning data sets
+
+X = set2.copy()
+X_encoded = pd.get_dummies(X, columns=['Region'])
+print(X_encoded.columns)
+optimal_cluster = find_optimal_clusters(X_encoded)
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X_encoded)
+# Perform KMeans clustering
+kmeans = KMeans(n_clusters=optimal_cluster, random_state=42)
+kmeans.fit(X_scaled)
+cluster_labels = kmeans.labels_
+
+# Add cluster labels to the DataFrame
+X_encoded['Cluster'] = cluster_labels
+print(X_encoded.columns)
+region_columns = ['Region_Bavaria', 'Region_Berlin',
+       'Region_Brandenburg', 'Region_Bremen', 'Region_Hamburg', 'Region_Hesse',
+       'Region_Lower Saxony', 'Region_Mecklenburg-Vorpommern',
+       'Region_North Rhine-Westphalia', 'Region_Rhineland-Palatinate',
+       'Region_Saarland', 'Region_Saxony', 'Region_Saxony-Anhalt',
+       'Region_Schleswig-Holstein', 'Region_Thuringia']
+regions = []
+
+# Iterate over each row
+for index, row in X_encoded.iterrows():
+    # Iterate over each region column
+    for region_col in region_columns:
+        # If the region column has a True value, add it to the regions list
+        if row[region_col]:
+            regions.append(region_col.split('_')[-1])
+            break  
+X_encoded['Region'] = regions
+print(X_encoded.columns)
+X_encoded.drop(columns=['Region_Bavaria', 'Region_Berlin',
+       'Region_Brandenburg', 'Region_Bremen', 'Region_Hamburg', 'Region_Hesse',
+       'Region_Lower Saxony', 'Region_Mecklenburg-Vorpommern',
+       'Region_North Rhine-Westphalia', 'Region_Rhineland-Palatinate',
+       'Region_Saarland', 'Region_Saxony', 'Region_Saxony-Anhalt',
+       'Region_Schleswig-Holstein', 'Region_Thuringia'], inplace=True)
+print(X_encoded.columns)
+coppy_df = X_encoded.copy()
+
+# Drop the 'Code' column
+#coppy_df.drop(columns='Code', inplace=True)
+
+# Set 'Region' as the index
+coppy_df.set_index('Region', inplace=True)
+
+
+data = coppy_df.values
+
+#print(data)
+
+
+# Perform PCA
+pca = sklearn.decomposition.PCA(n_components=3)
+decomposed = pca.fit_transform(data)
+print(decomposed)
+graph_data = pd.DataFrame(decomposed)
+print(graph_data.head())
+#fig = px.scatter(state_ratings,x='Jobs', y='Education', color='Cluster', labels=state_ratings.columns)
+#fig.show(
+training_fig =plot_clustered(graph_data)
+###################################################################################
+#testing
+###################################################################################
+test_df = pd.read_csv('../DATA/Sean data - help/Cultural/germany_state_ratings_1-10_various_categories.csv')
+test_df.drop(columns=['Code','Country'], inplace=True)
+X_test = test_df.copy()
+X_encoded_test = pd.get_dummies(X_test, columns=['Region'])
+print(X_encoded_test.head())
+# Prepare test data
+#scaled_test = scaler.transform(X_encoded_test)
+X_encoded_test['Cluster'] = kmeans.predict(X_encoded_test)
+
+# Iterate over each row
+regions2 = []
+for index, row in X_encoded_test.iterrows():
+    # Iterate over each region column
+    for region_col in region_columns:
+        # If the region column has a True value, add it to the regions list
+        if row[region_col]:
+            regions2.append(region_col.split('_')[-1])
+            break  
+print(regions2)
+X_encoded_test['Region'] = regions2
+X_encoded_test.drop(columns=region_columns, inplace=True)
+print(X_encoded_test.head())
+# Perform PCA transformation on test data using the same PCA instance
+copy_test = X_encoded_test.copy()
+copy_test.set_index('Region', inplace=True)
+pca2 = sklearn.decomposition.PCA(n_components=3)
+decomposed2 = pca2.fit_transform(copy_test)
+graph_test = plot_clustered(decomposed2)
+training_fig.show()
+graph_test.show()
