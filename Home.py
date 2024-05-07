@@ -10,8 +10,6 @@ import Visualization
 import dash_html_components as html
 
 
-
-
 with open("intro.txt", 'r') as f:
     intro_text = f.read()
 
