@@ -22,6 +22,7 @@ navbar = dbc.NavbarSimple(
         dbc.NavItem(dbc.NavLink("Home", href="/", active='exact')),
         dbc.NavItem(dbc.NavLink("Geo Analysis", href="/Analysis", active='exact')),
         dbc.NavItem(dbc.NavLink("State Analysis", href="/Visualization", active='exact')),
+        dbc.NavItem(dbc.NavLink("Our AI & ML", href="/aiml", active='exact')),
         dbc.DropdownMenu(
             children=[
                 dbc.DropdownMenuItem("More Information", header=True),
@@ -238,7 +239,8 @@ def render_page_content(pathname):
             ], className="summary-container"),
         ], className="visualization-page")
 
-
+    elif pathname == "/aiml":
+        return html.P("TO BE UPDATED")
 
     elif pathname == "/history":
         return Carousel.history_carousel
