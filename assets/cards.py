@@ -9,10 +9,10 @@ history_card = dbc.Card(
             [
                 html.H4("Postwar History", className="histoy_card"),
                 html.P(
-                    "Learn about how wars in Germany effected the landscape in modern day",
+                    "Learn about how wars in Germany affected the landscape in modern day",
                     className="card-text",
                 ),
-                dbc.Button("Read", color="primary"),
+                dbc.Button("Read", id="history-card-button", color="primary", href="/history"),
             ]
         ),
     ],

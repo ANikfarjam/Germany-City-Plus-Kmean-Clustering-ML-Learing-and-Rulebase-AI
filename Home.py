@@ -2,10 +2,10 @@
 import pandas as pd
 import plotly_express as px
 import dash
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, State
 import dash_bootstrap_components as dbc
 import Analysis
-from assets import cards, scatterMap, chloroplethMap
+from assets import cards, scatterMap, chloroplethMap,Carousel
 import Visualization
 import dash_html_components as html
 
@@ -240,6 +240,8 @@ def render_page_content(pathname):
 
 
 
+    elif pathname == "/history":
+        return Carousel.history_carousel
 
     # If the user tries to reach a different page, return a 404 message
     return html.Div(
