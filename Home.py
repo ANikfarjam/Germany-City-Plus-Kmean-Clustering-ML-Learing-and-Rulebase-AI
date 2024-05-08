@@ -429,5 +429,6 @@ def update_form_responses(n_clicks, *args):
     else:
         return ""
 
+app.title = "Germany City+"
 if __name__ == '__main__':
     app.run_server(debug=True)
