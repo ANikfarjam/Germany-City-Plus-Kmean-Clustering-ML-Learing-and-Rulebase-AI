@@ -36,6 +36,18 @@ Our solution is a user-friendly Dash app designed to streamline travel planning 
 
 ![State Analysis](./assets//app_screenshot/image2.png)
 
+### Recommendation System
+
+![alt text](./assets//app_screenshot/image3.png)!
+
+### Recommendation Result
+
+[alt text](./assets//app_screenshot/image4.png)
+
+### More Infomation About this project
+
+![alt text](./assets//app_screenshot/image5.png)
+
 ## Meet Our Developers
 
 - [Ashkan Nikfarjam](https://github.com/AshkanNikfarjam)
