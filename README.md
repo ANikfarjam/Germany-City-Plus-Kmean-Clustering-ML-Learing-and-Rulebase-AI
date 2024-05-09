@@ -48,9 +48,7 @@ Our solution is a user-friendly Dash app designed to streamline travel planning 
 
 ![alt text](./assets//app_screenshot/image5.png)
 
-![Read More About K-means Clustering] (https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1)
-
-![Germany City+](https://cdn.dribbble.com/users/3955123/screenshots/7133287/image.gif)
+## [Read More About K-means Clustering](https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1)
 
 ## Meet Our Developers
 
