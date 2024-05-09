@@ -1,0 +1,6 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/elbowmethod/480p15/partial_movie_files/ElbowPlot/1185818338_1887121793_223132457.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/elbowmethod/480p15/partial_movie_files/ElbowPlot/624642324_3165896348_1697055989.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/elbowmethod/480p15/partial_movie_files/ElbowPlot/624642324_3724633297_540140574.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/elbowmethod/480p15/partial_movie_files/ElbowPlot/624642324_3620588019_2029229873.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/elbowmethod/480p15/partial_movie_files/ElbowPlot/624642324_1733944848_806902531.mp4'

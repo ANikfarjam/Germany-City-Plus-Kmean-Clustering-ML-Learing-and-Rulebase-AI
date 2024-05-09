@@ -7,7 +7,7 @@ from dash import Dash, dcc, html, Input, Output, State
 import dash_bootstrap_components as dbc
 from matplotlib import table
 import Analysis
-from assets import cards, scatterMap, chloroplethMap,Carousel, recomend_resul
+from assets import cards, scatterMap, chloroplethMap,Carousel, recomend_resul,MLAIcomp
 import Visualization
 import dash_html_components as html
 from assets.recomenderUI import form,form_responses
@@ -30,8 +30,8 @@ navbar = dbc.NavbarSimple(
             children=[
                 dbc.DropdownMenuItem("More Information", header=True),
                 dbc.DropdownMenuItem("Visit GitHub", href="https://github.com/ANikfarjam/CS133Project"),
-                dbc.DropdownMenuItem("More Plots", href="https://colab.research.google.com/drive/16BnhGA7M3NFMUK-RDnYRq9ajwf3cfX-4?usp=sharing")
-                
+                dbc.DropdownMenuItem("More Plots", href="https://colab.research.google.com/drive/16BnhGA7M3NFMUK-RDnYRq9ajwf3cfX-4?usp=sharing"),
+                dbc.DropdownMenuItem("About Us"),
             ],
             nav=True,
             in_navbar=True,
@@ -243,7 +243,7 @@ def render_page_content(pathname):
         ], className="visualization-page")
 
     elif pathname == "/aiml":
-        return html.P("TO BE UPDATED")
+        return MLAIcomp.ma_page
 
     elif pathname == "/history":
         return Carousel.history_carousel
@@ -428,6 +428,7 @@ def update_form_responses(n_clicks, *args):
        return f"Form submitted. Please proceed to the next step. Responses: {form_responses}"
     else:
         return ""
+
 
 app.title = "Germany City+"
 if __name__ == '__main__':

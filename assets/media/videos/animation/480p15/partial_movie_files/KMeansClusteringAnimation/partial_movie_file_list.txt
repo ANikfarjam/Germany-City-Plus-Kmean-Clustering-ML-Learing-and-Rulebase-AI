@@ -1,0 +1,11 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/animation/480p15/partial_movie_files/KMeansClusteringAnimation/1185818338_2824509282_223132457.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/animation/480p15/partial_movie_files/KMeansClusteringAnimation/624642324_1328999773_1651920107.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/animation/480p15/partial_movie_files/KMeansClusteringAnimation/624642324_591247422_3221077972.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/animation/480p15/partial_movie_files/KMeansClusteringAnimation/624642324_1733944848_2650341038.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/animation/480p15/partial_movie_files/KMeansClusteringAnimation/624642324_2157365884_2429279211.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/animation/480p15/partial_movie_files/KMeansClusteringAnimation/624642324_3017558607_2429279211.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/animation/480p15/partial_movie_files/KMeansClusteringAnimation/624642324_2450868996_2429279211.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/animation/480p15/partial_movie_files/KMeansClusteringAnimation/624642324_502761543_2429279211.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/animation/480p15/partial_movie_files/KMeansClusteringAnimation/624642324_2203806905_2429279211.mp4'
+file 'file:/Users/rav007/Documents/cs133/ClusterModel/Project/assets/media/videos/animation/480p15/partial_movie_files/KMeansClusteringAnimation/624642324_1733944848_486715685.mp4'

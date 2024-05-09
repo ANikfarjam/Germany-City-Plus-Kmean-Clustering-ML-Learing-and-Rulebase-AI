@@ -51,4 +51,5 @@ for i, cluster_labels in enumerate(cluster_labels_list):
     ax.set_ylabel('PCA Component 2')
 
 plt.tight_layout()
-plt.show()
+plt.savefig('../assets/cluster_plot.png')
+#plt.show()
