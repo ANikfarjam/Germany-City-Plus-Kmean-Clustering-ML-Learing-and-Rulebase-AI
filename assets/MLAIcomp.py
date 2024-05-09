@@ -18,7 +18,7 @@ import pandas as pd
 # paragraph = read_paragraphs('./assets/AIML.txt')
 # with open('./Training/graphicKmean.py', 'r') as file:
 #         instructions_kg = file.read()
-with open('./assets/AIML.txt','r') as file:
+with open('./assets/AIMLS.txt','r') as file:
     paragraph = file.readlines()
 print(paragraph[3])
 #set one
@@ -48,10 +48,27 @@ ma_page = html.Div([
         controls=True,
         style={'width': '100%'}
     ),
-    html.P(paragraph[4]),
+    html.P(paragraph[4]),#elbow method
+    html.H2('Inertia'),
+    html.P(paragraph[5]),
     html.Img(src='./assets/sqc.png', style={'align': 'center'}),  
-    
-    
+    ###the google colab"
+    html.H1('Artificial Inteligence'),
+    html.P(paragraph[6]),
+    html.Img(src='./assets/ai3-1.png', style={'align': 'center'}),
+    html.P(paragraph[7]),  
+    html.H2('Semantic Network'),
+    html.P(paragraph[8]),
+    html.Video(
+        src="./assets/SemanticNetworkAnimation.mp4",
+        autoPlay=True,
+        loop=True,
+        controls=True,
+        style={'width': '100%'}
+    ), 
+    html.H2('Learning and RuleBased Agent'),
+    html.P(paragraph[9]),
+    html.P(paragraph[10]),
 ],style={'padding':'300px'})
 
 ##codeblock for code block
