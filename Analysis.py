@@ -26,7 +26,7 @@ city_df = pd.read_csv("./DATA/German cities.csv")
 rental = pd.read_csv("./DATA/Rentals/cityRentals.csv")
 rental.Price = rental.Price.astype(int)
 rental  = rental.groupby(by=['Name','Beds']).Price.mean().reset_index()
-print(rental)
+#print(rental)
 rental_pd = pd.DataFrame(rental).reset_index()
 # Merge DataFrames on the 'city' column
 rental_df = pd.merge(rental, city_df.copy(), how='left', left_on='Name', right_on='city')
