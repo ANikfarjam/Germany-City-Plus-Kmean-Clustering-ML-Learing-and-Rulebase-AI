@@ -11,6 +11,24 @@ import joblib
 
 #the result of clustering gets graphed using this function
 #inputed df has to be transformed into 3dimention
+def calculate_inertia(data, centroids, labels):
+    
+    # Calculate inertia for the given data and centroids.
+    
+    # Args:
+    # - data: The dataset for which to calculate inertia (numpy array).
+    # - centroids: The coordinates for the cluster centers (numpy array).
+    # - labels: The labels of the closest cluster center for each data point (numpy array).
+    
+    # Returns:
+    # - inertia: The calculated inertia.
+    
+    inertia = 0
+    for i, center in enumerate(centroids):
+        cluster_data = data[labels == i]
+        distances = np.linalg.norm(cluster_data - center, axis=1)
+        inertia += np.sum(distances**2)
+    return inertia
 def plot_clustered(df):
     states_clustered_fig = go.Figure(data=[go.Scatter3d(
         x=df[0],  # PC1 values
@@ -38,7 +56,7 @@ def plot_clustered(df):
     return states_clustered_fig
 
 #importing german cities all the DFs gets merged based on the keys of this DF
-set2 = pd.read_csv('resampling_germany_ratings.csv')
+set2 = pd.read_csv('./Training/resampling_germany_ratings.csv')
 #set2 = set2.groupby(by='Region').mean().reset_index()
 
 #grpahical confirmation of K-value

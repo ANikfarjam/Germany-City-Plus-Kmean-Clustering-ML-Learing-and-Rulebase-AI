@@ -11,6 +11,7 @@ from assets import cards, scatterMap, chloroplethMap,Carousel, recomend_resul,ML
 import Visualization
 import dash_html_components as html
 from assets.recomenderUI import form,form_responses
+#from Training import Train
 
 
 with open("intro.txt", 'r') as f:
