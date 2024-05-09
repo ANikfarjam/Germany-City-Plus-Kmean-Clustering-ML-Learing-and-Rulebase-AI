@@ -1,3 +1,4 @@
+#author: ashkan Nikfarjam
 from manim import *
 
 class SemanticNetworkAnimation(Scene):
