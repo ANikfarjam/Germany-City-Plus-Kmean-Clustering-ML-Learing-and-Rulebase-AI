@@ -49,8 +49,8 @@ ma_page = html.Div([
         controls=True,
         style={'width': '100%'}
     ),
-    html.P(paragraph[4]),#elbow method
     html.H2('Inertia'),
+    html.P(paragraph[4]),
     html.P(paragraph[5]),
     html.Img(src='./assets/sqc.png', style={'align': 'center'}),  
     ###the google colab"
