@@ -5,21 +5,6 @@ import pandas as pd
 #from Training import Train
 
 
-# def read_paragraphs(file_path):
-#     with open(file_path, 'r') as file:
-#         paragraphs = [[]]  # Initialize list to hold paragraphs
-#         for line in file:
-#             line = line.strip()  # Remove leading/trailing whitespaces
-#             if line:  # If line is not empty
-#                 paragraphs[-1].append(line)  # Append line to current paragraph
-#             else:  # If line is empty, start a new paragraph
-#                 paragraphs.append([])
-#         # Combine lines within each paragraph into a single string
-#         paragraphs = [' '.join(paragraph) for paragraph in paragraphs if paragraph]
-#     return paragraphs
-# paragraph = read_paragraphs('./assets/AIML.txt')
-# with open('./Training/graphicKmean.py', 'r') as file:
-#         instructions_kg = file.read()
 with open('./assets/AIMLS.txt','r') as file:
     paragraph = file.readlines()
 with open('./assets/ourmodel.txt') as file:
