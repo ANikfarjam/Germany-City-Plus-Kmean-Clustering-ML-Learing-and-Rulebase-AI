@@ -5,9 +5,27 @@ import pandas as pd
 import sklearn.decomposition
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
-
+import numpy as np
+def calculate_inertia(data, centroids, labels):
+    
+    # Calculate inertia for the given data and centroids.
+    
+    # Args:
+    # - data: The dataset for which to calculate inertia (numpy array).
+    # - centroids: The coordinates for the cluster centers (numpy array).
+    # - labels: The labels of the closest cluster center for each data point (numpy array).
+    
+    # Returns:
+    # - inertia: The calculated inertia.
+    
+    inertia = 0
+    for i, center in enumerate(centroids):
+        cluster_data = data[labels == i]
+        distances = np.linalg.norm(cluster_data - center, axis=1)
+        inertia += np.sum(distances**2)
+    return inertia
 # Load data
-data = pd.read_csv('resampling_germany_ratings.csv')
+data = pd.read_csv('resampling_1000.csv')
 
 # Encode categorical variables
 X_encoded = pd.get_dummies(data, columns=['Region'])
@@ -21,7 +39,6 @@ pca = sklearn.decomposition.PCA(n_components=2)
 
 # Initialize list to store cluster labels for each k
 cluster_labels_list = []
-
 # Iterate over different values of k
 for k in range(1, 11):
     # Initialize KMeans with current k
@@ -29,6 +46,7 @@ for k in range(1, 11):
     kmeans.fit(X_scaled)
     cluster_labels = kmeans.labels_
     cluster_labels_list.append(cluster_labels)
+    print("innertia of ", k, "value is: ", calculate_inertia(X_scaled, kmeans.cluster_centers_, kmeans.labels_))
 
 # Plotting
 num_rows = 2
@@ -50,6 +68,7 @@ for i, cluster_labels in enumerate(cluster_labels_list):
     ax.set_title(f'k = {i+1}')
     ax.set_xlabel('PCA Component 1')
     ax.set_ylabel('PCA Component 2')
+
 
 plt.tight_layout()
 plt.savefig('../assets/cluster_plot.png')
