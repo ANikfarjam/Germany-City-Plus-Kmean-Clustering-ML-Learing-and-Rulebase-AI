@@ -103,8 +103,16 @@ if __name__=="__main__":
     coppy_df['Cluster'] = kmeans.labels_ #this is an nparray
     coppy_df.to_csv('clustered_States.csv', index=False)
     print(coppy_df.head())
-
-    
+    ###################################
+    #test
+    ##################################
+    test_df = pd.read_csv('./Training/test.csv')
+    test_df.drop(columns=['Country','Code'], inplace=True)
+    Y_scaled = scaler.fit_transform(test_df.drop(columns='Region'))
+    clustered_states = kmeans.predict(Y_scaled)
+    print("clustered test:", clustered_states)
+    test_df['Cluster'] = clustered_states
+    test_df.to_csv('./Training/clustered_recomend.csv')
 training_fig =plot_all_points(coppy_df, kmeans.labels_)
 joblib.dump(kmeans, './Recomendation/kmeans_model.pkl')
-training_fig.show()
+
