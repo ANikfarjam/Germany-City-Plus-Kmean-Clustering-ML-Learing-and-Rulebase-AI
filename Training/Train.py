@@ -112,6 +112,7 @@ if __name__=="__main__":
     clustered_states = kmeans.predict(Y_scaled)
     print("clustered test:", clustered_states)
     test_df['Cluster'] = clustered_states
+    #im using the result of this test to recomend
     test_df.to_csv('./Training/clustered_recomend.csv')
 training_fig =plot_all_points(coppy_df, kmeans.labels_)
 joblib.dump(kmeans, './Recomendation/kmeans_model.pkl')
