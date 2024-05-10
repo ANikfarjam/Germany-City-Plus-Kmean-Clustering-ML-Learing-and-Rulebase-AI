@@ -109,6 +109,7 @@ if __name__=="__main__":
     kmeans = KMeans(n_clusters=3, random_state=42)
     kmeans.fit(X_scaled)
     cluster_labels = kmeans.labels_
+    print("innertia:", calculate_inertia(X_scaled, kmeans.cluster_centers_, kmeans.labels_))
     #####
 
     # Add cluster labels to the DataFrame

@@ -56,7 +56,7 @@ def plot_clustered(df):
     return states_clustered_fig
 
 #importing german cities all the DFs gets merged based on the keys of this DF
-set2 = pd.read_csv('./Training/resampling_germany_ratings.csv')
+set2 = pd.read_csv('../Training/resampling_germany_ratings.csv')
 #set2 = set2.groupby(by='Region').mean().reset_index()
 
 #grpahical confirmation of K-value
@@ -109,6 +109,7 @@ if __name__=="__main__":
     kmeans = KMeans(n_clusters=3, random_state=42)
     kmeans.fit(X_scaled)
     cluster_labels = kmeans.labels_
+    print("innertia:", calculate_inertia(X_scaled, kmeans.cluster_centers_, kmeans.labels_))
     #####
 
     # Add cluster labels to the DataFrame
@@ -164,5 +165,5 @@ print(X_encoded.shape)
 # fig.show()
 training_fig =plot_clustered(graph_data)
 ########save our model to file so we can call predict from other location
-#joblib.dump(kmeans, '../Recomendation/kmeans_model.pkl')
+joblib.dump(kmeans, '../Recomendation/kmeans_model.pkl')
 training_fig.show()
