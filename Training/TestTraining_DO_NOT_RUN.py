@@ -165,5 +165,5 @@ print(X_encoded.shape)
 # fig.show()
 training_fig =plot_clustered(graph_data)
 ########save our model to file so we can call predict from other location
-joblib.dump(kmeans, '../Recomendation/kmeans_model.pkl')
+#joblib.dump(kmeans, '../Recomendation/kmeans_model.pkl')
 training_fig.show()
