@@ -75,6 +75,39 @@ To verify that the data was normally distributed, I chose three States and looke
 
 ![alt text](./assets//normalDist.png)
 
+Aditionally the data we used for rentals were extracted by scraping data from a rental website. So for each city there were some missing value.
+
+| Name         | Beds | Price |
+|--------------|------|-------|
+| Ludwigshafen | 1    | 1450  |
+| Dortmund     | 1    | 1070  |
+| Dortmund     | 1    | 1450  |
+| Dortmund     | 1    | 1070  |
+| Dortmund     | 1    | 1839  |
+| Dortmund     | 1    | 1839  |
+| Dortmund     | 2    | 1300  |
+
+To be able to use these information for our recomendation agent, A.N used K Nearest Neighbor Inputer to replace the missing values. As the result our data turned into:
+
+| Name     | Beds | Price               | Imputed Price      |
+|----------|------|---------------------|--------------------|
+| Aachen   | 1    | 1622.3333333333333 | 1622.3333333333333 |
+| Aachen   | 2    |                     | 1629.6877280594717 |
+| Aachen   | 3    | 2109.5              | 2109.5             |
+| Aachen   | 4    |                     | 1629.6877280594717 |
+| Aachen   | 5    |                     | 1629.6877280594717 |
+| Aachen   | 6    |                     | 1629.6877280594717 |
+| Augsburg | 1    | 1723.875            | 1723.875           |
+| Augsburg | 2    |                     | 1629.6877280594717 |
+| Augsburg | 3    |                     | 1629.6877280594717 |
+| Augsburg | 4    |                     | 1629.6877280594717 |
+| Augsburg | 5    |                     | 1629.6877280594717 |
+| Augsburg | 6    |                     | 1629.6877280594717 |
+| Bensheim | 1    |                     | 1629.6877280594717 |
+| Bensheim | 2    | 1590.0              | 1590.0             |
+
+- Data pipeline methods (Input, Bootstrap)
+
 
 ### Machine Learning(A. Nikfarjam:)
 
@@ -82,6 +115,8 @@ To verify that the data was normally distributed, I chose three States and looke
 K-Mean clustering is an unsupervised classification Model.  What sets it apart from supervised algorithms is the absence of a target variable. In unsupervised learning,the dataset only has input variables which describe the data. 
 
 <video controls src="assets/KMeansClusteringAnimation.mp4" title="Title"></video>
+
+
 
 In this model the clustering is done based on the distance from the centroid point.  The algorithm starts by randomly initializing centroids within the feature space. These centroids serve as the initial cluster centers. Due to the iterative nature of this model, these centerpoints are placed repeatedly and it returns the clusters with the equal variance minimizing a criterion known as the inertia or within-cluster sum-of-squares.
 
