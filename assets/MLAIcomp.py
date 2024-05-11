@@ -5,9 +5,9 @@ import pandas as pd
 #from Training import Train
 
 
-with open('./assets/AIMLS.txt','r') as file:
+with open('./assets/AIMLS.txt','r', encoding='utf-8') as file:
     paragraph = file.readlines()
-with open('./assets/ourmodel.txt') as file:
+with open('./assets/ourmodel.txt','r', encoding='utf-8') as file:
     mlP = file.readlines()
 print(paragraph[3])
 #set one
