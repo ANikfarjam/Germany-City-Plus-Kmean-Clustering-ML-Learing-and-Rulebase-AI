@@ -29,12 +29,8 @@ def recommend(user_array=None):
 #     "religious-preferences"
 # ]
     print(user_array[0][5:16])
-    # Get the directory of the current script
-    script_dir = os.path.dirname(__file__)
-    # Construct the full path to kmeans_model.pkl
-    model_path = os.path.join(script_dir, 'kmeans_model.pkl')
     # Load the model
-    kmeans_model = joblib.load(model_path)
+    kmeans_model = joblib.load('./Recomendation/kmeans_model.pkl')
     # Extract columns 6 to 15
     user = user_array[0][5:16]
     # Reshape the user data to a 2D array
@@ -48,8 +44,7 @@ def recommend(user_array=None):
     #unlike ligic base agent that uses logical inferances
     #the world represenation is an array
     #for searchability we just sort our pandas
-    cluster_path = os.path.join(script_dir, '../Training/clustered_recomend.csv')
-    clustered_states_df = pd.read_csv(cluster_path)
+    clustered_states_df = pd.read_csv('./Training/clustered_recomend.csv')
     #first rulebase infrance
     assert(clustered_user >=0)
     qualified_States = clustered_states_df[clustered_states_df['Cluster']==clustered_user[0]]
@@ -88,8 +83,7 @@ def recommend(user_array=None):
 
     #3rd inrfrance
     #rental 
-    rental_path = os.path.join(script_dir, '../DATA/Rentals/cityImputRental.csv')
-    rental_df = pd.read_csv(rental_path)
+    rental_df = pd.read_csv('./DATA/Rentals/cityImputRental.csv')
     numPPl = 1
     if user_array[0][2] > 1:
         if user_array[0][3]: #Search for the berdrooms number preferances
