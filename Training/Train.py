@@ -119,7 +119,7 @@ if __name__=="__main__":
     test_df.to_csv('./Training/clustered_recomend.csv')
     joblib.dump(kmeans, './Recomendation/kmeans_model.pkl')
 graphDf = pd.read_csv('./Training/clustered_States.csv')
-print(graphDf.head())
+#print(graphDf.head())
 kmeans_jobs = joblib.load('./Recomendation/kmeans_model.pkl')
 training_fig =plot_all_points(graphDf, kmeans_jobs.labels_)
 
