@@ -14,14 +14,15 @@ Our solution is a user-friendly Dash app designed to streamline travel planning 
 
 #### How to Run
 
-- $ `git clone https://github.com/ANikfarjam/CS133Project.git`
-- $ `cd CS133Project`
-- $ `pip install requirements.txt`
+    git clone https://github.com/ANikfarjam/CS133Project.git
+    cd CS133Project
+    pip install -r requirements.txt
 
 Because we are importing modules from sibilings directory, we always have to run the home page as module by addin -m and not including .py
 
-- $ `python3 -m Home`
-- Open your browser of choice and go to `http://127.0.0.1:8050/` (Chrominum based preferred)
+    python3 -m Home
+- Click this link to open our page in a new tab: <a href='http://127.0.0.1:8050/'> Open the site! </a>
+(Chrominum based preferred)
 
 #### How to Stop
 
