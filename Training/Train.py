@@ -1,5 +1,6 @@
 #author: Ashkan Nikfajram
 
+from igraph import Graph
 from matplotlib.pyplot import xscale
 import pandas as pd
 from sklearn.cluster import KMeans
@@ -13,7 +14,9 @@ import joblib
 #inputed df has to be transformed into 3dimention
 def plot_all_points(df, cluster_labels):
     pca = sklearn.decomposition.PCA(n_components=3)
-    data = df.values
+    copyDF = df.copy()
+    copyDF = copyDF.drop(columns='Region')
+    data = copyDF.values
     decomposed = pca.fit_transform(data)
 
     fig = go.Figure()
@@ -114,6 +117,10 @@ if __name__=="__main__":
     test_df['Cluster'] = clustered_states
     #im using the result of this test to recomend
     test_df.to_csv('./Training/clustered_recomend.csv')
-training_fig =plot_all_points(coppy_df, kmeans.labels_)
-joblib.dump(kmeans, './Recomendation/kmeans_model.pkl')
+    joblib.dump(kmeans, './Recomendation/kmeans_model.pkl')
+graphDf = pd.read_csv('./Training/clustered_States.csv')
+print(graphDf.head())
+kmeans_jobs = joblib.load('./Recomendation/kmeans_model.pkl')
+training_fig =plot_all_points(graphDf, kmeans_jobs.labels_)
+
 

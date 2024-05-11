@@ -2,8 +2,7 @@
 from dash import dcc, html, Input, Output, State
 import dash_bootstrap_components as dbc
 import pandas as pd
-#from Training import Train
-
+from Training.Train import training_fig
 
 with open('./assets/AIMLS.txt','r', encoding='utf-8') as file:
     paragraph = file.readlines()
@@ -55,7 +54,8 @@ ma_page = html.Div([
     html.P(paragraph[6]),
     html.Img(src='./assets/ai3-1.png', style={'align': 'center'}),
     html.P(paragraph[7]),
-    #dcc.Graph(figure=Train.training_fig),  
+    html.P('This is the data clustered after traininf our model:(feel free to move it arount to exlore it)'),
+    dcc.Graph(figure=training_fig, id='trainedData', style={'height':'700px'}),  
     html.H2('Semantic Network'),
     html.P(paragraph[8]),
     html.Video(
@@ -70,16 +70,3 @@ ma_page = html.Div([
     html.P(paragraph[10]),
 ],style={'padding':'300px'})
 
-##codeblock for code block
-# @app.callback(
-#     Output('output-graph', 'figure'),
-#     [Input('interval-component', 'n_intervals')],
-#     [dash.dependencies.State('code-input', 'value')]
-# )
-# def execute_code(n_intervals, code):
-#     try:
-#         exec(code, globals())
-#         return fig
-#     except Exception as e:
-#         print(e)
-#         return {}
